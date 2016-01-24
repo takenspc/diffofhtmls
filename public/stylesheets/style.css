@@ -74,3 +74,11 @@ footer a {
     height: .75em;
     vertical-align: baseline;
 }
+
+del {
+    background: pink;
+}
+
+ins {
+    background: lightgreen;
+}

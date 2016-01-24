@@ -18,7 +18,17 @@ block content
             - var href = 'https://w3c.github.io/html/#' + section.w3c.id
             a(href=href)= section.w3c.heading
     tbody
-        each diff in diffs
-            tr
-                td= diff.a
-                td= diff.b
+      each diff in diffs
+        tr
+          td
+            each hunk in diff.a
+              if hunk.removed
+                del #{hunk.value}
+              else
+                | #{hunk.value}
+          td
+            each hunk in diff.b
+              if hunk.added
+                ins #{hunk.value}
+              else
+                | #{hunk.value}

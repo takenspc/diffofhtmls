@@ -3,6 +3,7 @@ var path = require('path');
 var express = require('express');
 var router = express.Router();
 var utils = require('./utils');
+var diffutils = require('./diffutils');
 
 router.param('chapter', function (req, res, next, chapter) {
     req.chapter = chapter;
@@ -37,7 +38,7 @@ router.get('/:chapter/:section', function (req, res, next) {
             var whatwg = data[0];
             var w3c = data[1];
             
-            var diffs = utils.computeDiff(whatwg, w3c);
+            var diffs = diffutils.computeDiff(whatwg, w3c);
 
             res.render('diff', {
                 title: 'Diff of ' + section.heading + ' | ' + section.parent.heading,

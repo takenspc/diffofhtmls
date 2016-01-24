@@ -1,35 +1,6 @@
 'use strict';
 var fs = require('fs');
 var path = require('path');
-var diff = require('diff');
-
-
-function computeDiff(a, b) {
-    var rawDiffs = diff.diffLines(a, b, {
-        newlineIsToken: true
-    });
-    
-    var diffItems = [];
-    for (var i = 0, diffItem; i < rawDiffs.length; i++) {
-        var rawDiff = rawDiffs[i];
-        if (rawDiff.removed) {
-            diffItem = {
-                a: rawDiff.value,
-                b: null,
-            };
-        } else if (rawDiff.added) {
-            diffItem.b = rawDiff.value;
-            diffItems.push(diffItem);
-        } else {
-            diffItem = {
-                a: rawDiff.value,
-                b: rawDiff.value
-            };
-            diffItems.push(diffItem);
-        }
-    }
-    return diffItems;
-}
 
 function findSection(htmlPath) {
     return loadIndexJSON().then(function (index) {
@@ -98,5 +69,4 @@ module.exports = {
     loadIndexJSON: loadIndexJSON,
     findSection: findSection,
     loadSectionHTML: loadSectionHTML,
-    computeDiff: computeDiff,
 }
