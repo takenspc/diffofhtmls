@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+
+  table
+    thead
+      tr
+        th WHATWG HTML Standard
+        th W3C HTML 5.1
+      tr
+        td
+          if section.whatwg
+            - var href = 'https://html.spec.whatwg.org/#' + section.whatwg.id
+            a(href=href)= section.whatwg.heading
+        td
+          if section.w3c
+            - var href = 'https://w3c.github.io/html/#' + section.w3c.id
+            a(href=href)= section.w3c.heading
+    tbody
+        each diff in diffs
+            tr
+                td= diff.a
+                td= diff.b

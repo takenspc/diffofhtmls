@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1 Diff of HTMLs
+  p An unofficial diffs between <a href="https://html.spec.whatwg.org/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>.
+
+  h2 Table of contents of the HTML specifications
+  p as of ...
+  ol
+    each chapter in index
+      li
+        | #{chapter.heading}
+        if chapter.sections
+          ol
+            each section in chapter.sections
+              li
+                - var href = '/diff/' + section.htmlPath
+                a(href=href)
+                  - var heading = section.heading === '__pre__' ? '(preface)' : section.heading
+                  | #{heading}
+                  span.icons
+                    if section.whatwg
+                      img.whatwg(alt='WHATWG', src='/images/whatwg.svg')
+                    if section.w3c
+                      img.w3c(alt='W3C', src='/images/w3c.svg')

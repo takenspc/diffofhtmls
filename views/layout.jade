@@ -1,0 +1,20 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    - var pageTitle = title + ' | Diff of HTMLs'
+    title= pageTitle
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+      div.globalLogo Diff of HTMLs
+      nav.globalNav
+        ul
+          li
+            a(href='/') Top
+          li
+            a(href='/about') About
+    main
+      block content
+    footer
+      div An unofficial diffs between <a href="https://html.spec.whatwg.org/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>.

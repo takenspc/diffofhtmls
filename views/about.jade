@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  h1= title
+
+  h2 What's this?
+  p This is an unofficial diffs between <a href="https://html.spec.whatwg.org/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>.
+
+  h2 Are tables of contents (TOC) displayed in this service same as the specifications?
+  p No. This service modifies original TOCs to avoid unnecessary diffs.
+
+  h3 Modifications applied for both WAHTWG HTML Standard and W3C HTML 5.1
+  ul
+    li Remove headers, table of contents, abstract, status of the document
+    li Remove indexes, references, acknowledgements
+
+  h3 Modifications applied for W3C HTML 5.1
+  ul
+    li Replace 'Serializing' with 'Serialising' in 'The HTML syntax' and 'The XHTML syntax'
+    li Reoder 'Links' in 'The elements of HTML'
+
+  h2 Are HTMLs displayed in this service same as the specifications?
+  p No. This service modifies original HTMLs to avoid unnecessary diffs.
+
+  h3 Modifications applied for both WAHTWG HTML Standard and W3C HTML 5.1
+  ul
+    li Normalize whitespaces and tags
+    li Remove <code>data-*</code> attributes
+    li Remove <code>id</code> attributes
+    li Make all <code>href</code> attributes point to '#'
+
+  h3 Modifications applied for WHATWG HTML Standard
+  ul
+    li Remove <code>div.status</code>
+
+  h3 Modifications applied for W3C HTML 5.1
+  ul
+    li Remove <code>a.self-link</code>
+    li Remove <code>span.secno</code> and <code>span.content</code> used in headings
+    li Remove <code>role</code> attribute (role=note)
+    li Remove <code>span</code> used in syntax highlightings
