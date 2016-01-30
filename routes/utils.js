@@ -2,55 +2,6 @@
 var fs = require('fs');
 var path = require('path');
 
-function findSection(htmlPath) {
-    return loadIndexJSON().then(function (index) {
-        for (var i = 0; i < index.length; i++) {
-            var sections = index[i].sections;
-            if (!sections) {
-                continue;
-            }
-            
-            for (var j = 0; j < sections.length; j++) {
-                if (sections[j].htmlPath === htmlPath) {
-                    var section = sections[j];
-                    // TODO
-                    section.parent = index[i];
-
-                    return section;
-                }
-            }
-        }
-
-        return null;
-    });
-}
-
-function loadSectionHTML(org, htmlPath) {
-    return new Promise(function (resolve, reject) {
-        console.log(org, htmlPath);
-        var sectionPath = path.join(__dirname, '..', 'data', org, htmlPath);
-        fs.readFile(sectionPath, 'utf-8', function (err, html) {
-            if (err) {
-                // No such file
-                if (err.code === 'ENOENT') {
-                    resolve('');
-                    return;
-                }
-
-                reject(err);
-                return;
-            }
-
-            resolve(html);
-        });
-    });
-}
-
-function loadIndexJSON() {
-    var jsonPath = path.join(__dirname, '..', 'data', 'index.json');
-    return loadJSON(jsonPath);
-}
-
 function loadJSON(jsonPath) {
     return new Promise(function (resolve, reject) {
         fs.readFile(jsonPath, 'utf-8', function (err, str) {
@@ -65,8 +16,67 @@ function loadJSON(jsonPath) {
     });
 }
 
+
+function createParentLinkForIndexJSON(sections, parent) {
+    for (var i = 0, len = sections.length; i < len; i++) {
+        var section = sections[i];
+        section.parent = parent;
+
+        createParentLinkForIndexJSON(section.sections, section);
+    }
+}
+
+function loadIndexJSON() {
+    var jsonPath = path.join(__dirname, '..', 'data', 'index.json');
+    return loadJSON(jsonPath).then(function (sections) {
+        createParentLinkForIndexJSON(sections, null)
+        return sections;
+    });
+}
+
+
+function findSectionInternal(sections, sectionPath) {
+    for (var i = 0, len = sections.length; i < len; i++) {
+        var section = sections[i];
+        if (section.path === sectionPath) {
+            return section;
+        }
+
+        var child = findSectionInternal(section.sections, sectionPath);
+        if (child) {
+            return child;
+        }
+    }
+
+    return null;
+}
+
+function findSection(sectionPath) {
+    return loadIndexJSON().then(function (sections) {
+        var section =  findSectionInternal(sections, sectionPath);
+        if (section) {
+            return section;
+        }
+
+        return Promise.reject(new Error('No such section'));
+    });
+}
+
+
+function loadDiff(section) {
+    var jsonPath = path.join(__dirname, '..', 'data', section.path + '.json');
+    return loadJSON(jsonPath).then(function (diffs) {
+        return {
+            section: section,
+            diffs: diffs,
+        };
+    });
+}
+
+
 module.exports = {
+    loadJSON: loadJSON,
     loadIndexJSON: loadIndexJSON,
     findSection: findSection,
-    loadSectionHTML: loadSectionHTML,
-}
+    loadDiff: loadDiff,
+};
