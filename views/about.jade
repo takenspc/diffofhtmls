@@ -3,11 +3,12 @@ extends layout
 block content
   h1= title
 
-  h2 What's this?
-  p This is an unofficial diffs between <a href="https://html.spec.whatwg.org/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>.
+  h2 Q. What's this?
+  p This is an unofficial diffs between <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>.
+  p There are number of differences between HTML Standard and HTML 5.1 including Canvas 2D Context, Web Workers, Web Storage, Web Sockets API, Microdata, <code>postMsessage</code>, <code>requestAnimationFrame</code>, <code>hgroup</code>, ruby model, <code>main</code>, requirements for alternative texts of images, <code>iframe[seamless]</code>, <code>showModalDialog</code>, and so on. It is hard for me to track the differences. Thus I create this service.
 
-  h2 Are tables of contents (TOC) displayed in this service same as the specifications?
-  p No. This service modifies original TOCs to avoid unnecessary diffs.
+  h2 Q. Are tables of contents (TOC) displayed in this service same as the specifications?
+  p No. This service modifies original TOCs as follows to reduce unnecessary diffs.
 
   h3 Modifications applied for both WAHTWG HTML Standard and W3C HTML 5.1
   ul
@@ -19,15 +20,17 @@ block content
     li Replace 'Serializing' with 'Serialising' in 'The HTML syntax' and 'The XHTML syntax'
     li Reoder 'Links' in 'The elements of HTML'
 
-  h2 Are HTMLs displayed in this service same as the specifications?
-  p No. This service modifies original HTMLs to avoid unnecessary diffs.
+  h2 Q. Are HTMLs displayed in this service same as the specifications?
+  p No. This service reformats HTMLs to reduce unnecessary diffs.
+  p Though I admit that reformatting creates another clutters of diffs, it is better than do nothing.
 
   h3 Modifications applied for both WAHTWG HTML Standard and W3C HTML 5.1
   ul
-    li Normalize whitespaces and tags
+    li Normalize whitespaces excluding <code>pre</code>
+    li Sort attributes alphabetically and don't omit '"'
     li Remove <code>data-*</code> attributes
     li Remove <code>id</code> attributes
-    li Make all <code>href</code> attributes point to '#'
+    li Make all <code>href</code> attributes point to '#' (<code>href='#'</code>)
 
   h3 Modifications applied for WHATWG HTML Standard
   ul
@@ -35,7 +38,8 @@ block content
 
   h3 Modifications applied for W3C HTML 5.1
   ul
+    li Remove start and end tags of <code>div.impl</code> and <code>span.impl</code>
+    li Remove start and end tags of  <code>span</code> used in syntax highlightings
+    li Remove start and end tags of <code>span.secno</code> and <code>span.content</code> used in headings
     li Remove <code>a.self-link</code>
-    li Remove <code>span.secno</code> and <code>span.content</code> used in headings
-    li Remove <code>role</code> attribute (role=note)
-    li Remove <code>span</code> used in syntax highlightings
+    li Remove <code>role</code> attribute (ex. <code>role=note</code>)

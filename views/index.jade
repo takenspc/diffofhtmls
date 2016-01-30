@@ -4,6 +4,7 @@ mixin list(sections)
   ol
     each section in sections
       li
+        - // XXX
         - var heading = section.heading === '__pre__' ? '(preface)' : section.heading
         if section.sections.length === 0
           - var href = 'diff/' + section.path
@@ -11,18 +12,35 @@ mixin list(sections)
             | #{heading}
             span.icons
               if section.whatwg
-                img.whatwg(alt='WHATWG', src='/images/whatwg.svg')
+                img.icon(alt='avialable at HTML Standard', src='/images/whatwg.svg')
               if section.w3c
-                img.w3c(alt='W3C', src='/images/w3c.svg')
+                img.icon(alt='avialable at HTML 5.1 Editor\'s Draft', src='/images/w3c.svg')
         else
           | #{heading}
           +list(section.sections)
 
+mixin convertDate(time)
+    - var created = moment(time || 0).utc()
+    time(datetime=created.format())= created.format(' YYYY-M-D H:m:s UTC')
 
 block content
   h1 Diff of HTMLs
-  p An unofficial diffs between <a href="https://html.spec.whatwg.org/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>.
+  p
+    | An unofficial diffs between <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>. All of diffs are generated from <a href="https://html.spec.whatwg.org/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/single-page.html">W3C HTML 5.1 Editor's Draft</a> retrived at
+    +convertDate(time)
+    | .
 
   h2 Table of contents of the HTML specifications
-  p as of ...
+
+  p Legends:
+  dl.legends
+    dt
+     img.icon(alt='avialable at HTML Standard', src='/images/whatwg.svg')
+    dd
+     p A section is avialable at HTML Standard.
+    dt
+     img.icon(alt='avialable at HTML 5.1 Editor\'s Draft', src='/images/w3c.svg')
+    dd
+     p A section is avialable at HTML 5.1 Editor's Draft.
+
   +list(index)

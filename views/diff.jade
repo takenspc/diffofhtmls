@@ -1,9 +1,16 @@
 extends layout
 
 block content
-  h1= title
+  h1 The diff of “#{section.heading}”
 
-  table
+  p The section is located at: #{topicPath}
+
+  p.note Note: This service reformats HTMLs to reduce unnecessary diffs. The following HTMLs are not equal to original HTMLs. <a href="/about/">More info</a>.
+
+  table.diff
+    colgroup
+      col(style='width:50%')
+      col(style='width:50%')
     thead
       tr
         th WHATWG HTML Standard
@@ -23,12 +30,12 @@ block content
           td
             each hunk in diff.a
               if hunk.removed
-                del #{hunk.value}
+                mark #{hunk.value}
               else
                 | #{hunk.value}
           td
             each hunk in diff.b
               if hunk.added
-                ins #{hunk.value}
+                mark #{hunk.value}
               else
                 | #{hunk.value}

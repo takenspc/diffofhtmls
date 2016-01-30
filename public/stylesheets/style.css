@@ -4,81 +4,146 @@ html {
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background: #fff;
     color: #333;
     font-family: sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
 }
 
-header,
-main,
-footer {
-    padding: 1rem 2rem;    
+.wrap {
+    margin: auto;
+    max-width: 78rem;
+    padding: 0 2rem;
 }
 
 a {
     color: #00f;
 }
 
-header {
+/*
+ * header
+ */
+#header {
     background: #333;
+    border-bottom: thin solid #333;
+    color: #fff;
+    padding-top: 1em;
+}
+
+#header a {
+    color: inherit;
+}
+
+#header .logo img {
+    height: 1.5em;
+    margin-right: .25em;
+    vertical-align: middle;
+}
+
+#header .summary {
+    font-size: 0.8em;
+}
+
+/*
+ * Footer
+ */
+#footer {
+    background: #333;
+    border-bottom: thin solid #333;
+    border-top: thin solid #333;
     color: #fff;
 }
 
-header a {
-    color: #fff;
+#footer p {
+    font-size: 0.8em;
 }
 
-.globalLogo {
+#footer a {
+    color: inherit;
+}
+
+
+/*
+ * Index
+ */
+.legends {
+    margin-left: 1em;
+}
+
+.legends dt {
+    clear: left;
     float: left;
+    width: 2em;
 }
 
-.globalNav {
-    float: right;
-}
-
-.globalNav ul {
+.legends dd,
+.legends p {
     margin: 0;
-    padding: 0;
 }
 
-.globalNav li {
-    float: left;
-    margin: 0;
-    padding-left: 2rem;
-    list-style: none;
-}
-
-header:after {
+.legends:after {
     clear: both;
     content: '';
-    height: 0;
     display: block;
+    width: 0;
 }
 
-
-footer {
-    background: #333;
-    color: #fff;
+.icon {
+    height: 1em;
 }
 
-footer a {
-    color: #fff;
+.icons {
+    margin-left:.75rem;
 }
 
-
-.icons .whatwg,
-.icons .w3c {
-    margin-left:.5rem;
-    height: .75em;
-    vertical-align: baseline;
+.icons .icon {
+    margin-right: .25em;
+}
+/*
+ * Diff
+ */
+.diff {
+    border-bottom: thin solid #888;
+    border-collapse: collapse;
+    border-right: thin solid #888;
+    border-top: thin solid #888;
+    margin-bottom: 2em;
+    table-layout: fixed;
+    width: 100%;
 }
 
-del {
-    background: pink;
+.diff th,
+.diff td {
+    border-left: thin solid #888;
 }
 
-ins {
-    background: lightgreen;
+.diff thead {
+    background: #cfc;
+}
+
+.diff thead th {
+    font-weight: bold;
+    padding-top: .5em;
+}
+
+.diff thead td {
+    border-bottom: thin solid #888;
+    padding-bottom: .5em;
+    text-align: center;
+}
+
+.diff tbody td {
+    font-size: 0.75em;
+    vertical-align: top;
+    white-space: pre-wrap;
+}
+
+.diff tbody tr:nth-child(odd) td {
+    background: #eee;
+} 
+
+.diff mark {
+    background: #ff0;
 }
