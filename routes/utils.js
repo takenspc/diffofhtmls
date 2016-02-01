@@ -23,6 +23,8 @@ function loadJSON(jsonPath) {
 function* nextSection(parent, sections) {
     for (var i = 0, len = sections.length; i < len; i++) {
         var section = sections[i];
+
+        // create link here too
         section.parent = parent;
 
         if (section.sections.length === 0) {
@@ -33,9 +35,22 @@ function* nextSection(parent, sections) {
     }
 }
 
+function fixID(section) {
+    if (section.id === '__pre__') {
+        if (section.whatwg) {
+            section.whatwg.id = section.parent.whatwg.id;
+        }
+        if (section.w3c) {
+            section.w3c.id = section.parent.w3c.id;
+        }
+    }
+}
+
 function createLinkForIndexJSON(sections) {
     var previousSection = null;
     for (var section of nextSection(null, sections)) {
+        fixID(section);
+
         section.previous = previousSection;
         section.next = null;
 
