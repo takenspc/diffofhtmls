@@ -17,19 +17,40 @@ function loadJSON(jsonPath) {
 }
 
 
-function createParentLinkForIndexJSON(sections, parent) {
+//
+// Create Link
+//
+function* nextSection(parent, sections) {
     for (var i = 0, len = sections.length; i < len; i++) {
         var section = sections[i];
         section.parent = parent;
 
-        createParentLinkForIndexJSON(section.sections, section);
+        if (section.sections.length === 0) {
+            yield section;
+        } else {
+            yield* nextSection(section, section.sections);
+        }
+    }
+}
+
+function createLinkForIndexJSON(sections) {
+    var previousSection = null;
+    for (var section of nextSection(null, sections)) {
+        section.previous = previousSection;
+        section.next = null;
+
+        if (previousSection) {
+            previousSection.next = section;
+        }
+
+        previousSection = section;
     }
 }
 
 function loadIndexJSON() {
     var jsonPath = path.join(__dirname, '..', 'data', 'index.json');
     return loadJSON(jsonPath).then(function (sections) {
-        createParentLinkForIndexJSON(sections, null)
+        createLinkForIndexJSON(sections, null)
         return sections;
     });
 }
