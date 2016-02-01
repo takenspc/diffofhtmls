@@ -18,6 +18,10 @@ body {
     padding: 0 2rem;
 }
 
+p.note {
+    font-size: 0.8em;
+}
+
 a {
     color: #00f;
 }
@@ -42,10 +46,6 @@ a {
     vertical-align: middle;
 }
 
-#header .summary {
-    font-size: 0.8em;
-}
-
 /*
  * Footer
  */
@@ -54,9 +54,6 @@ a {
     border-bottom: thin solid #333;
     border-top: thin solid #333;
     color: #fff;
-}
-
-#footer p {
     font-size: 0.8em;
 }
 
@@ -66,10 +63,18 @@ a {
 
 
 /*
- * Index
+ * Local navigation
+ */
+.localNavi {
+    font-size: 0.8em;
+}
+
+
+/*
+ * Legends
  */
 .legends {
-    margin-left: 1em;
+    font-size: .8em;
 }
 
 .legends dt {
@@ -101,6 +106,7 @@ a {
 .icons .icon {
     margin-right: .25em;
 }
+
 /*
  * Diff
  */
@@ -135,7 +141,7 @@ a {
 }
 
 .diff tbody td {
-    font-size: 0.75em;
+    min-height: 1.5em;
     vertical-align: top;
     white-space: pre-wrap;
 }

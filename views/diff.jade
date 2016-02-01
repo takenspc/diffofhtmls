@@ -1,11 +1,31 @@
+include ./mixins/sectionLink.jade
+include ./mixins/diffGeneratedNotice.jade
+
 extends layout
 
 block content
-  h1 The diff of “#{section.heading}”
+  h1 “#{section.headingText}”
 
-  p The section is located at: #{topicPath}
+  h2 About the section
+  
+  +sectionLegends()
+  
+  div.localNavi
+    p The section is located at: #{topicPath}
+    dl
+      dt Previous section
+      dd
+        +sectionLink(previousSection)
+      dt Next section
+      dd 
+        +sectionLink(nextSection)
 
-  p.note Note: This service reformats HTMLs to reduce unnecessary diffs. The following HTMLs are not equal to original HTMLs. <a href="/about/">More info</a>.
+
+  h2 Difference between HTML Standard and HTML 5.1 Editor's Draft
+
+  p.note Note: This service reformats HTMLs to reduce unnecessary diffs. The following HTMLs are not equal to the specifications. <a href="/about/">More info</a>.
+
+  +diffGeneratedNotice(time)
 
   table.diff
     colgroup
@@ -14,16 +34,16 @@ block content
     thead
       tr
         th WHATWG HTML Standard
-        th W3C HTML 5.1
+        th W3C HTML 5.1 Editor's Draft
       tr
         td
           if section.whatwg
             - var href = 'https://html.spec.whatwg.org/#' + section.whatwg.id
-            a(href=href)= section.whatwg.heading
+            a(href=href)= section.whatwg.originalHeadingText
         td
           if section.w3c
-            - var href = 'https://w3c.github.io/html/#' + section.w3c.id
-            a(href=href)= section.w3c.heading
+            - var href = 'https://w3c.github.io/html/single-page.html#' + section.w3c.id
+            a(href=href)= section.w3c.originalHeadingText
     tbody
       each diff in diffs
         tr

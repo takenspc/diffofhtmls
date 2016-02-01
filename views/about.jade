@@ -4,21 +4,22 @@ block content
   h1= title
 
   h2 Q. What's this?
-  p This is an unofficial diffs between <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>.
-  p There are number of differences between HTML Standard and HTML 5.1 including Canvas 2D Context, Web Workers, Web Storage, Web Sockets API, Microdata, <code>postMsessage</code>, <code>requestAnimationFrame</code>, <code>hgroup</code>, ruby model, <code>main</code>, requirements for alternative texts of images, <code>iframe[seamless]</code>, <code>showModalDialog</code>, and so on. It is hard for me to track the differences. Thus I create this service.
+  p This service provides unofficial differences between <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>.
+  p There are number of differences between WHATWG HTML Standard and W3C HTML 5.1 Editor's Draft including Canvas 2D Context, Web Workers, Web Storage, Web Sockets API, Microdata, <code>postMessage</code>, <code>requestAnimationFrame</code>, <code>hgroup</code>, <code>main</code>, ruby model, requirements for alternative texts of images, <code>iframe[seamless]</code>, <code>showModalDialog</code>, and so on. I can't remember those differences. Thus I create this service.
+  p This service is not affiliate with WHATWG nor W3C.
 
-  h2 Q. Are tables of contents (TOC) displayed in this service same as the specifications?
+  h2 Q. Are tables of contents (TOCs) displayed in this service same as the specifications?
   p No. This service modifies original TOCs as follows to reduce unnecessary diffs.
 
   h3 Modifications applied for both WAHTWG HTML Standard and W3C HTML 5.1
   ul
-    li Remove headers, table of contents, abstract, status of the document
-    li Remove indexes, references, acknowledgements
+    li Remove all sections before 'Introduction' (headers, table of contents, abstract, status of the document)
+    li Remove all sections after 'IANA considerations' (indexes, references, acknowledgements)
 
   h3 Modifications applied for W3C HTML 5.1
   ul
     li Replace 'Serializing' with 'Serialising' in 'The HTML syntax' and 'The XHTML syntax'
-    li Reoder 'Links' in 'The elements of HTML'
+    li Reorder 'Links' in 'The elements of HTML'
 
   h2 Q. Are HTMLs displayed in this service same as the specifications?
   p No. This service reformats HTMLs to reduce unnecessary diffs.
@@ -26,8 +27,8 @@ block content
 
   h3 Modifications applied for both WAHTWG HTML Standard and W3C HTML 5.1
   ul
-    li Normalize whitespaces excluding <code>pre</code>
-    li Sort attributes alphabetically and don't omit '"'
+    li Normalize white spaces excluding <code>pre</code>
+    li Sort attributes alphabetically and quote always
     li Remove <code>data-*</code> attributes
     li Remove <code>id</code> attributes
     li Make all <code>href</code> attributes point to '#' (<code>href='#'</code>)
@@ -39,7 +40,7 @@ block content
   h3 Modifications applied for W3C HTML 5.1
   ul
     li Remove start and end tags of <code>div.impl</code> and <code>span.impl</code>
-    li Remove start and end tags of  <code>span</code> used in syntax highlightings
+    li Remove start and end tags of  <code>span</code> used in syntax highlighting
     li Remove start and end tags of <code>span.secno</code> and <code>span.content</code> used in headings
     li Remove <code>a.self-link</code>
     li Remove <code>role</code> attribute (ex. <code>role=note</code>)

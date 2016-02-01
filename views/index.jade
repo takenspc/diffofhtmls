@@ -1,46 +1,29 @@
+include ./mixins/sectionLink.jade
+include ./mixins/diffGeneratedNotice.jade
 extends layout
 
-mixin list(sections)
+mixin toc(sections)
   ol
     each section in sections
       li
-        - // XXX
-        - var heading = section.heading === '__pre__' ? '(preface)' : section.heading
         if section.sections.length === 0
-          - var href = 'diff/' + section.path
-          a(href=href)
-            | #{heading}
-            span.icons
-              if section.whatwg
-                img.icon(alt='avialable at HTML Standard', src='/images/whatwg.svg')
-              if section.w3c
-                img.icon(alt='avialable at HTML 5.1 Editor\'s Draft', src='/images/w3c.svg')
+          +sectionLink(section)
         else
-          | #{heading}
-          +list(section.sections)
-
-mixin convertDate(time)
-    - var created = moment(time || 0).utc()
-    time(datetime=created.format())= created.format(' YYYY-M-D H:m:s UTC')
+          | #{section.headingText}
+          +toc(section.sections)
 
 block content
   h1 Diff of HTMLs
   p
-    | An unofficial diffs between <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>. All of diffs are generated from <a href="https://html.spec.whatwg.org/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/single-page.html">W3C HTML 5.1 Editor's Draft</a> retrived at
-    +convertDate(time)
-    | .
+    | Unofficial diffs between <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>. 
 
-  h2 Table of contents of the HTML specifications
 
-  p Legends:
-  dl.legends
-    dt
-     img.icon(alt='avialable at HTML Standard', src='/images/whatwg.svg')
-    dd
-     p A section is avialable at HTML Standard.
-    dt
-     img.icon(alt='avialable at HTML 5.1 Editor\'s Draft', src='/images/w3c.svg')
-    dd
-     p A section is avialable at HTML 5.1 Editor's Draft.
+  h2 Table of contents (TOCs) of the HTML specifications
 
-  +list(index)
+  +sectionLegends()
+
+  p.note Note: This service modify TOCs to reduce unnecessary diffs. The following TOCs are not equal to the specifications. <a href="/about/">More info</a>.
+
+  +diffGeneratedNotice(time)
+
+  +toc(index)
