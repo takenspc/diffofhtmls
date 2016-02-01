@@ -4,43 +4,42 @@ var express = require('express');
 var router = express.Router();
 var utils = require('./utils');
 
-function formatPreface(section, parent) {
-    if (section && section.heading === '__pre__') {
-        section.heading = '(preface)';
-        if (parent) {
-            section.id = parent.id;
-        }
-    }
-}
 
 router.get(/^\/(.+)$/, function (req, res, next) {
     var sectionPath = req.param(0);
-    console.log(sectionPath);
 
-    utils.findSection(sectionPath).then(function (section) {
-        return utils.loadDiff(section);
-    }).then(function (obj) {
+    var fetchJSONPath = path.join(__dirname, '..', 'data', 'fetch.json');
+
+    Promise.all([
+        utils.findSection(sectionPath).then(function (section) {
+            return utils.loadDiff(section);
+        }),
+        utils.loadJSON(fetchJSONPath),
+    ]).then(function (data) {
+        var obj = data[0];
         var section = obj.section;
         var diffs = obj.diffs;
 
-        // XXX
-        formatPreface(section, null);
-        formatPreface(section.whatwg, section.parent.whatwg);
-        formatPreface(section.w3c, section.parent.w3c);
+        var time = data[1].time;
 
         // XXX
         var topics = [];
         var titles = [];
         for (var node = section; node; node = node.parent) {
-            topics.unshift(node.heading);
-            titles.push(node.heading);
+            topics.unshift(node.headingText);
+            titles.push(node.headingText);
         }
 
         res.render('diff', {
             title: 'Diff of ' + titles.join(' | '),
+            time: time,
+
             section: section,
-            diffs: diffs,
             topicPath: topics.join(' → '),
+            previousSection: section.previous,
+            nextSection: section.next,
+
+            diffs: diffs,
         });
     }).catch(function (err) {
         next(err);

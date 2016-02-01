@@ -13,19 +13,19 @@ router.get('/about', function (req, res, next) {
 
 
 router.get('/', function (req, res, next) {
-    var jsonPath = path.join(__dirname, '..', 'data', 'fetch.json');
+    var fetchJSONPath = path.join(__dirname, '..', 'data', 'fetch.json');
 
     Promise.all([
         utils.loadIndexJSON(),
-        utils.loadJSON(jsonPath),
+        utils.loadJSON(fetchJSONPath),
     ]).then(function (data) {
         var index = data[0];
         var time = data[1].time;
 
         res.render('index', {
             title: 'Top',
-            index: index,
             time: time,
+            index: index,
         });
     }).catch(function (err) {
         next(err);
