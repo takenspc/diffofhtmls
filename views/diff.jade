@@ -27,11 +27,11 @@ block content
       tr
         td
           if section.whatwg
-            - var href = 'https://html.spec.whatwg.org/#' + section.whatwg.id
+            - var href = 'https://html.spec.whatwg.org/#' + encodeURIComponent(section.whatwg.id)
             a(href=href)= section.whatwg.originalHeadingText
         td
           if section.w3c
-            - var href = 'https://w3c.github.io/html/single-page.html#' + section.w3c.id
+            - var href = 'https://w3c.github.io/html/single-page.html#' + encodeURIComponent(section.w3c.id)
             a(href=href)= section.w3c.originalHeadingText
     tbody
       each diff in diffs
