@@ -136,6 +136,7 @@ a {
     min-height: 1.5em;
     vertical-align: top;
     white-space: pre-wrap;
+    padding: 0.125em 0.25em;
 }
 
 .diff tbody tr:nth-child(odd) td {
