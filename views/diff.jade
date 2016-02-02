@@ -27,11 +27,16 @@ block content
       tr
         td
           if section.whatwg
-            - var href = 'https://html.spec.whatwg.org/#' + encodeURIComponent(section.whatwg.id)
+            - var id = encodeURIComponent(section.whatwg.id);
+            - var href = 'https://html.spec.whatwg.org/multipage/#' + id;
             a(href=href)= section.whatwg.originalHeadingText
         td
           if section.w3c
-            - var href = 'https://w3c.github.io/html/single-page.html#' + encodeURIComponent(section.w3c.id)
+            - var parent = section.parent;
+            - while (parent.parent) { parent = parent.parent }
+            - var html = encodeURIComponent(parent.w3c.id) + '.html';
+            - var id = encodeURIComponent(section.w3c.id);
+            - var href = 'https://w3c.github.io/html/' + html + '#' + id; 
             a(href=href)= section.w3c.originalHeadingText
     tbody
       each diff in diffs
