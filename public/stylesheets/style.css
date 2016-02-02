@@ -133,10 +133,13 @@ a {
 }
 
 .diff tbody td {
-    min-height: 1.5em;
+    padding: 0.125em 0.25em;
     vertical-align: top;
     white-space: pre-wrap;
-    padding: 0.125em 0.25em;
+}
+
+.diff tbody td:before {
+    min-height: 1.5em;
 }
 
 .diff tbody tr:nth-child(odd) td {
