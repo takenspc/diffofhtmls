@@ -139,7 +139,7 @@ a {
 }
 
 .diff tbody td:before {
-    min-height: 1.5em;
+    content: '';
 }
 
 .diff tbody tr:nth-child(odd) td {
