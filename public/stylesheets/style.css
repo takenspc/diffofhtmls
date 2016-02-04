@@ -118,7 +118,7 @@ a {
 }
 
 .diff thead {
-    background: #cfc;
+    background: #f8f8f8;
 }
 
 .diff thead th {
@@ -142,8 +142,8 @@ a {
     content: '';
 }
 
-.diff tbody tr:nth-child(odd) td {
-    background: #eee;
+.diff tbody tr:nth-child(even) td {
+    background: #f8f8f8;
 } 
 
 .diff mark {
