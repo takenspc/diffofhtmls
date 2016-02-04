@@ -105,7 +105,6 @@ a {
 .diff {
     border-bottom: thin solid #888;
     border-collapse: collapse;
-    border-right: thin solid #888;
     border-top: thin solid #888;
     margin-bottom: 2em;
     table-layout: fixed;
@@ -128,11 +127,14 @@ a {
 
 .diff thead td {
     border-bottom: thin solid #888;
+    border-right: thin solid #888;
     padding-bottom: .5em;
     text-align: center;
 }
 
 .diff tbody td {
+    border-bottom: thin solid #eee;
+    border-right: thin solid #888;
     padding: 0.125em 0.25em;
     vertical-align: top;
     white-space: pre-wrap;
@@ -144,7 +146,11 @@ a {
 
 .diff tbody tr:nth-child(even) td {
     background: #f8f8f8;
-} 
+}
+
+.diff tbody tr:last-child td {
+    border-bottom: none;
+}
 
 .diff mark {
     background: #ff0;
