@@ -14,15 +14,13 @@ mixin toc(sections)
 
 block content
   h1 Diff of HTMLs
-  p
-    | Unofficial diff viewer for <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>. 
-
+  p Unofficial diff viewer for <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1 Editor's Draft</a>. 
 
   h2 Table of contents (TOCs) of the HTML specifications
 
   +sectionLegends()
 
-  p.note Note: This service modify TOCs to reduce unnecessary diffs. The following TOCs are not equal to the specifications. <a href="/about/">More info</a>.
+  p.note Note: This service modifies TOCs to reduce unnecessary diffs. The following TOCs are not equal to the specifications. <a href="/about/">More info</a>.
 
   +diffGeneratedNotice(time)
 
