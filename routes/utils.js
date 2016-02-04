@@ -35,19 +35,9 @@ function* nextSection(parent, sections) {
     }
 }
 
-function fixID(section) {
-    if (section.whatwg && section.whatwg.id === '__pre__') {
-        section.whatwg.id = section.parent.whatwg.id;
-    }
-    if (section.w3c && section.w3c.id === '__pre__') {
-        section.w3c.id = section.parent.w3c.id;
-    }
-}
-
 function createLinkForIndexJSON(sections) {
     var previousSection = null;
     for (var section of nextSection(null, sections)) {
-        fixID(section);
 
         section.previous = previousSection;
         section.next = null;
