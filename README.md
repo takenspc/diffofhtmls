@@ -1,15 +1,15 @@
 # [Diff of HTMLs]
 
-Unofficial diff viewer for [WHATWG HTML Standard] and [W3C HTML 5.1 Editor's Draft].
+Unofficial diff viewer for [WHATWG HTML Standard] and [W3C HTML 5.1].
 
 
-There are number of differences between WHATWG HTML Standard and W3C HTML 5.1 Editor's Draft. I can’t remember those differences. The Diff of HTMLs provides differences of each section between the specifications. 
+There are number of differences between WHATWG HTML Standard and W3C HTML 5.1. I can’t remember those differences. The Diff of HTMLs provides differences of each section between the specifications. 
 
 [Diff of HTMLs]: http://diffofhtmls.herokuapp.com/
 [WHATWG HTML Standard]: https://html.spec.whatwg.org/multipage/
-[W3C HTML 5.1 Editor's Draft]: https://w3c.github.io/html/
+[W3C HTML 5.1]: https://w3c.github.io/html/
 
-The `data` directory contains derived materials from WHATWG HTML Standard and W3C HTML 5.1 Editor's Draft.
+The `data` directory contains derived materials from WHATWG HTML Standard and W3C HTML 5.1.
 
 Copyright information of HTML Standard is available at [its Acknowledgements](https://html.spec.whatwg.org/multipage/acknowledgements.html).
 
