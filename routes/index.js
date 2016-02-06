@@ -7,7 +7,7 @@ var utils = require('./utils');
 
 router.get('/about', function (req, res, next) {
     res.render('about', {
-        title: 'About',
+        title: 'About this site',
     });
 });
 
