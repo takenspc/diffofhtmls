@@ -15,15 +15,16 @@ body {
 .wrap {
     margin: auto;
     max-width: 78rem;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
-p.note {
-    font-size: 0.8em;
+.note {
+    font-size: .8em;
 }
 
 a {
     color: #00f;
+    text-decoration: underline;
 }
 
 /*
@@ -33,11 +34,13 @@ a {
     background: #333;
     border-bottom: thin solid #333;
     color: #fff;
+    font-size: .8em;
     padding-top: 1em;
 }
 
 #header a {
     color: inherit;
+    text-decoration: underline;
 }
 
 #header .logo img {
@@ -59,6 +62,7 @@ a {
 
 #footer a {
     color: inherit;
+    text-decoration: underline;
 }
 
 
@@ -92,7 +96,7 @@ a {
 }
 
 .icons {
-    margin-left:.75rem;
+    margin-left: .75rem;
 }
 
 .icons .icon {
@@ -103,9 +107,9 @@ a {
  * Diff
  */
 .diff {
-    border-bottom: thin solid #888;
+    border-bottom: thin solid #aaa;
     border-collapse: collapse;
-    border-top: thin solid #888;
+    border-top: thin solid #aaa;
     margin-bottom: 2em;
     table-layout: fixed;
     width: 100%;
@@ -113,7 +117,7 @@ a {
 
 .diff th,
 .diff td {
-    border-left: thin solid #888;
+    border-left: thin solid #aaa;
 }
 
 .diff thead {
@@ -121,23 +125,23 @@ a {
 }
 
 .diff thead th {
+    border-right: thin solid #aaa;
     font-weight: bold;
     padding-top: .5em;
 }
 
 .diff thead td {
-    border-bottom: thin solid #888;
-    border-right: thin solid #888;
+    border-bottom: thin solid #aaa;
+    border-right: thin solid #aaa;
     padding-bottom: .5em;
     text-align: center;
 }
 
 .diff tbody td {
     border-bottom: thin solid #eee;
-    border-right: thin solid #888;
-    padding: 0.125em 0.25em;
+    border-right: thin solid #aaa;
+    padding: .125em .25em;
     vertical-align: top;
-    white-space: pre-wrap;
 }
 
 .diff tbody td:before {
@@ -152,6 +156,6 @@ a {
     border-bottom: none;
 }
 
-.diff mark {
+.diff .mark {
     background: #ff0;
 }

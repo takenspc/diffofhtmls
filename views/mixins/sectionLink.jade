@@ -3,11 +3,12 @@ mixin sectionLink(section)
     - var href = '/diff/' + section.path.split('/').map(encodeURIComponent).join('/');
     a(href=href)
       | #{section.headingText}
+      |  
       span.icons
         if section.whatwg
-          img.icon(alt='available at HTML Standard', src='/images/whatwg.svg')
+          img.icon(alt='available at HTML Standard ', src='/images/whatwg.svg')
         if section.w3c
-          img.icon(alt='available at HTML 5.1 Editor\'s Draft', src='/images/w3c.svg')
+          img.icon(alt='available at HTML 5.1 Editor\'s Draft ', src='/images/w3c.svg')
   else
     | None
 
@@ -16,10 +17,10 @@ mixin sectionLegends
     p Legends:
     dl
       dt
-       img.icon(alt='available at HTML Standard', src='/images/whatwg.svg')
+       img.icon(alt='available at HTML Standard ', src='/images/whatwg.svg')
       dd
        p A section available at HTML Standard.
       dt
-       img.icon(alt='available at HTML 5.1 Editor\'s Draft', src='/images/w3c.svg')
+       img.icon(alt='available at HTML 5.1 Editor\'s Draft ', src='/images/w3c.svg')
       dd
        p A section available at HTML 5.1 Editor's Draft.
