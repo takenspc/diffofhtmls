@@ -28,6 +28,8 @@ block content
             - var id = encodeURIComponent(section.whatwg.id);
             - var href = 'https://html.spec.whatwg.org/multipage/#' + id;
             a(href=href)= section.whatwg.originalHeadingText
+          else
+            | Not available
         td
           if section.w3c
             - var parent = section.parent;
@@ -36,6 +38,8 @@ block content
             - var id = encodeURIComponent(section.w3c.id);
             - var href = 'https://w3c.github.io/html/' + html + '#' + id; 
             a(href=href)= section.w3c.originalHeadingText
+          else
+            | Not available
     tbody
       each diff in diffs
         tr
