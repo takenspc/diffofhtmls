@@ -1,6 +1,6 @@
 mixin sectionLink(section)
   if section
-    - var href = '/diff/' + encodeURIComponent(section.path)
+    - var href = '/diff/' + section.path.split('/').map(encodeURIComponent).join('/');
     a(href=href)
       | #{section.headingText}
       span.icons
