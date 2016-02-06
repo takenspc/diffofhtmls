@@ -1,5 +1,6 @@
 {
   "name": "diffofhtmls",
+  "description": "Unofficial diff viewer for WHATWG HTML Standard and W3C HTML 5.1 Editor's Draft",
   "version": "0.0.0",
   "private": true,
   "scripts": {
