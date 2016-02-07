@@ -5,6 +5,18 @@ var router = express.Router();
 var utils = require('./utils/firebase');
 
 
+router.get('/atom', function (req, res, next) {
+    utils.loadUpdates().then(function (updates) {
+        res.set('Content-Type', 'application/atom+xml');
+        res.render('log_atom', {
+            updates: updates,
+        });
+    }).catch(function (err) {
+        next(err);
+    });
+});
+
+
 router.get('/', function (req, res, next) {
     utils.loadUpdates().then(function (updates) {
         res.render('log', {

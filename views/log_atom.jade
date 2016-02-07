@@ -1,0 +1,24 @@
+include ./mixins/updateEntry.jade
+
+feed(xmlns='http://www.w3.org/2005/Atom')
+  title Diff of HTMLs
+  link(href=baseURL, rel='alternate')
+  - var selfURL = baseURL + '/log/atom/'; 
+  link(href=selfURL, rel='self')
+  id= selfURL
+  author
+    name Takeshi Kurosawa
+  updated
+    - var lastUpdated = moment(updates[0] || 0).utc()
+    | #{lastUpdated.format()}
+  each update in updates
+    entry
+      - var updated = moment(update.datetime || 0).utc()
+      title= updated.format(momentFormat)
+      - var href = baseURL + '/log/#' + update.datetime
+      link(href=href)
+      id= href
+      updated= updated.format()
+      content(type='xhtml')
+        div(xmlns='http://www.w3.org/1999/xhtml')
+          +updateEntry(update)

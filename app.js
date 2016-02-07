@@ -14,6 +14,7 @@ var app = express();
 
 app.locals.moment = require('moment');
 app.locals.momentFormat = 'YYYY-M-D H:m:s UTC';
+app.locals.baseURL = process.env.BASE_URL || 'https://diffofhtmls.herokuapp.com';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
