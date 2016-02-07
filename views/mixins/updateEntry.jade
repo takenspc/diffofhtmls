@@ -1,0 +1,19 @@
+mixin updateEntry(update)
+  if update.updated && update.updated.length > 0
+    ul
+      each updateEntry in update.updated
+        li
+          - var href = '/diff/' + updateEntry.path.split('/').map(encodeURIComponent).join('/');
+          a(href=href)= updateEntry.headingText
+          p WHATWG HTML Standard: 
+            if updateEntry.whatwg
+              | #{updateEntry.whatwg.splitted}
+            else
+              | not modified
+          p W3C HTML 5.1: 
+            if updateEntry.w3c
+              | #{updateEntry.w3c.splitted}
+            else
+              | not modified
+  else
+    p The specifications are not modified.

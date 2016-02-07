@@ -1,28 +1,13 @@
+include ./mixins/updateEntry.jade
+
 extends layout
 
 block content
   h1= title
   
   each update in updates
-    div.update
+    div.update(id=update.datetime)
       h2
-        - var created = moment(update.datetime || 0).utc()
-        time(datetime=created.format())= created.format('YYYY-M-D H:m:s UTC')
-      if update.updated && update.updated.length > 0
-        ul
-          each updateEntry in update.updated
-            li
-              - var href = '/diff/' + updateEntry.path.split('/').map(encodeURIComponent).join('/');
-              a(href=href)= updateEntry.headingText
-              p WHATWG HTML Standard: 
-                if updateEntry.whatwg
-                  | #{updateEntry.whatwg.splitted}
-                else
-                  | not modified
-              p W3C HTML 5.1: 
-                if updateEntry.w3c
-                   | #{updateEntry.w3c.splitted}
-                 else
-                   | not modified
-      else
-        p The specifications are not modified.
+        - var updated = moment(update.datetime || 0).utc()
+        time(datetime=updated.format())= updated.format(momentFormat)
+      +updateEntry(update)
