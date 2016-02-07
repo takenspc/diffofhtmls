@@ -91,7 +91,6 @@ function loadDiff(sectionPath) {
 }
 
 
-
 //
 // Fetch
 //
@@ -102,8 +101,33 @@ function loadFetchJSON() {
     });
 }
 
+
+//
+// Update
+//
+function loadUpdateEntries() {
+    var updateRef = FIREBASE_REF.child('update');
+    return new Promise(function(resolve, reject) {
+        var query = updateRef.limitToLast(14);
+        query.once('value', function (dataSnapshot) {
+            var entries = [];
+
+            // TODO
+            dataSnapshot.forEach(function(childSnapshot) {
+                var val = childSnapshot.val();
+                entries.push(val);
+            });
+
+            resolve(entries.reverse());
+        }, function (err) {
+            reject(err);
+        });
+    });
+}
+
 module.exports = {
     loadDiff: loadDiff,
     loadFetchJSON: loadFetchJSON,
     loadIndexJSON: loadIndexJSON,
+    loadUpdates: loadUpdateEntries,
 };
