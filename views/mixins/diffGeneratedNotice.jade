@@ -1,6 +1,6 @@
 mixin diffGeneratedNotice(time)
   p.note
-    | All of diffs are generated from <a href="https://html.spec.whatwg.org/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/single-page.html">W3C HTML 5.1</a> retrieved at
+    | All of diffs are generated from <a href="https://html.spec.whatwg.org/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/single-page.html">W3C HTML 5.1</a> retrieved at 
     - var created = moment(time || 0).utc()
-    time(datetime=created.format())= created.format(' YYYY-M-D H:m:s UTC')
+    time(datetime=created.format())= created.format(momentFormat)
     | . <a href="/log/">More info</a>.

@@ -13,6 +13,7 @@ var log = require('./routes/log');
 var app = express();
 
 app.locals.moment = require('moment');
+app.locals.momentFormat = 'YYYY-M-D H:m:s UTC';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
