@@ -2,7 +2,7 @@
 var path = require('path');
 var express = require('express');
 var router = express.Router();
-var utils = require('./utils');
+var utils = require('./utils/json');
 
 
 router.get('/about', function (req, res, next) {
@@ -13,14 +13,12 @@ router.get('/about', function (req, res, next) {
 
 
 router.get('/', function (req, res, next) {
-    var fetchJSONPath = path.join(__dirname, '..', 'data', 'fetch.json');
-
     Promise.all([
         utils.loadIndexJSON(),
-        utils.loadJSON(fetchJSONPath),
+        utils.loadFetchJSON(),
     ]).then(function (data) {
         var index = data[0];
-        var time = data[1].time;
+        var time = data[1];
 
         res.render('index', {
             title: 'Top',

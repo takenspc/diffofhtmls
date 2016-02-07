@@ -2,25 +2,21 @@
 var path = require('path');
 var express = require('express');
 var router = express.Router();
-var utils = require('./utils');
+var utils = require('./utils/json');
 
 
 router.get(/^\/(.+)$/, function (req, res, next) {
     var sectionPath = req.param(0);
 
-    var fetchJSONPath = path.join(__dirname, '..', 'data', 'fetch.json');
-
     Promise.all([
-        utils.findSection(sectionPath).then(function (section) {
-            return utils.loadDiff(section);
-        }),
-        utils.loadJSON(fetchJSONPath),
+        utils.loadDiff(sectionPath),
+        utils.loadFetchJSON(),
     ]).then(function (data) {
         var obj = data[0];
         var section = obj.section;
         var diffs = obj.diffs;
 
-        var time = data[1].time;
+        var time = data[1];
 
         // XXX
         var topics = [];
