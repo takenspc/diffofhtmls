@@ -2,7 +2,7 @@
 var path = require('path');
 var express = require('express');
 var router = express.Router();
-var utils = require('./utils/json');
+var utils = require('./utils/firebase');
 
 
 router.get('/about', function (req, res, next) {
