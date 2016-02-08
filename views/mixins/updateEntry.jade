@@ -1,5 +1,6 @@
 mixin updateEntry(update)
   if update.updated && update.updated.length > 0
+    p The HTML specifications are updated.
     ul
       each updateEntry in update.updated
         li
@@ -16,4 +17,4 @@ mixin updateEntry(update)
             else
               | not modified
   else
-    p The specifications are not modified.
+    p The HTML specifications are not updated.
