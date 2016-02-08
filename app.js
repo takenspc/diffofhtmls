@@ -13,7 +13,7 @@ var log = require('./routes/log');
 var app = express();
 
 app.locals.moment = require('moment');
-app.locals.momentFormat = 'YYYY-M-D H:m:s UTC';
+app.locals.momentFormat = 'YYYY-M-D (UTC)';
 app.locals.baseURL = process.env.BASE_URL || 'https://diffofhtmls.herokuapp.com';
 
 // view engine setup
