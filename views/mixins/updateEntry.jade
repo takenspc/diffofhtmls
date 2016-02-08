@@ -5,12 +5,12 @@ mixin updateEntry(update)
         li
           - var href = '/diff/' + updateEntry.path.split('/').map(encodeURIComponent).join('/');
           a(href=href)= updateEntry.headingText
-          p WHATWG HTML Standard: 
+          div WHATWG HTML Standard: 
             if updateEntry.whatwg
               | #{updateEntry.whatwg.splitted}
             else
               | not modified
-          p W3C HTML 5.1: 
+          div W3C HTML 5.1: 
             if updateEntry.w3c
               | #{updateEntry.w3c.splitted}
             else
