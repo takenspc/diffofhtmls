@@ -95,20 +95,28 @@ a {
     height: 1em;
 }
 
-.icons {
-    margin-left: .75rem;
-}
-
-.icons .icon {
-    margin-right: .25em;
-}
-
 /*
  * Table of Contents
  */
+.toc {
+    margin-bottom: 2em;
+} 
+
 .toc ol {
     margin: 0;
     padding: 0 0 0 1.5em;
+}
+
+/*
+ * Section Link
+ */
+.sectionLink .meter {
+    margin-right: .5em;
+    width: 2em;
+}
+
+.sectionLink .icon {
+    margin: 0 .25em;
 }
 
 /*
@@ -165,5 +173,6 @@ a {
 }
 
 .diff .mark {
-    background: #ff0;
+    background: #ff6;
+    border: thin solid #aa0;
 }
