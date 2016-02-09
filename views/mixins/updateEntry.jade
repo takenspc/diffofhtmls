@@ -1,19 +1,26 @@
+include ../mixins/sectionLink.jade
+
 mixin updateEntry(update)
   if update.updated && update.updated.length > 0
     p The HTML specifications are updated.
-    ul
+    ul.sections
       each updateEntry in update.updated
-        li
-          - var href = '/diff/' + updateEntry.path.split('/').map(encodeURIComponent).join('/');
-          a(href=href)= updateEntry.headingText
-          div WHATWG HTML Standard: 
+        li.section
+          if updateEntry.section
+            +sectionLink(updateEntry.section)
+          else
+            - var href = '/diff/' + updateEntry.path.split('/').map(encodeURIComponent).join('/');
+            a(href=href)= updateEntry.headingText
+          div.whatwg WHATWG HTML Standard: 
             if updateEntry.whatwg
-              | #{updateEntry.whatwg.splitted}
+              strong
+                | #{updateEntry.whatwg.splitted}
             else
               | not modified
-          div W3C HTML 5.1: 
+          div.w3c W3C HTML 5.1: 
             if updateEntry.w3c
-              | #{updateEntry.w3c.splitted}
+              strong
+                | #{updateEntry.w3c.splitted}
             else
               | not modified
   else

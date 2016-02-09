@@ -176,3 +176,31 @@ a {
     background: #ff6;
     border: thin solid #aa0;
 }
+
+/*
+ * Update
+ */
+.update {
+    margin-bottom: 2em;
+}
+
+.update .sections {
+    -moz-column-width: 20em;
+    -webkit-column-width: 20em;
+    column-width: 20em;
+    margin: 0;
+    list-style: none;
+}
+
+.update .section {
+    -moz-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 1em;
+}
+
+.update .section .whatwg,
+.update .section .w3c {
+    margin: 0;
+    padding: 0 0 0 1.5em;
+}
