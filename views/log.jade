@@ -1,3 +1,4 @@
+include ./mixins/sectionLink.jade
 include ./mixins/updateEntry.jade
 
 extends layout
@@ -9,7 +10,9 @@ block content
   p This page shows which sections of which specifications are modified since last time the Diff of HTMLs calculated the diffs.
   p.note Note: The modifications of specifications don't mean the modfications of diffs. For example, if the two specifications fixed same typos at the same time, there will not be differences between them.
   p.note Note: This site will not proivde the differences between different revisions of a single specification. If you're looking for such differences, please refer to the specifications' GitHub repositories. Both of <a href="https://github.com/whatwg/html">WHATWG HTML Standard's repository</a> and <a href="https://github.com/w3c/html/">W3C HTML 5.1's repository</a> are visible to the public.
-  
+
+  +sectionLegends()
+
   each update in updates
     div.update(id=update.datetime)
       h2
