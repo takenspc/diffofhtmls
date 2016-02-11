@@ -111,12 +111,23 @@ a {
  * Section Link
  */
 .sectionLink .meter {
-    margin-right: .5em;
+    margin-right: .4em;
     width: 2em;
 }
 
-.sectionLink .icon {
-    margin: 0 .25em;
+.sectionLink .icons {
+    display: inline-block;
+    margin-right: .3em;
+    vertical-align: middle;
+    width: 2.8em;
+}
+
+.sectionLink .icons .whatwg {
+    float: left;
+}
+
+.sectionLink .icons .w3c {
+    float: right;
 }
 
 /*
