@@ -158,6 +158,7 @@ a {
     border-right: thin solid #aaa;
     padding: .125em .25em;
     vertical-align: top;
+    white-space: pre-wrap;
 }
 
 .diff tbody td:before {
