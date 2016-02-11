@@ -211,8 +211,8 @@ a {
     margin-bottom: 1em;
 }
 
-.update .section .whatwg,
-.update .section .w3c {
+.update .section div.whatwg,
+.update .section div.w3c {
     margin: 0;
     padding: 0 0 0 1.5em;
 }
