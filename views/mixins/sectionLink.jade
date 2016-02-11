@@ -2,11 +2,14 @@ mixin sectionLink(section)
   if section
     - var href = '/diff/' + section.path.split('/').map(encodeURIComponent).join('/');
     a(href=href).sectionLink
-      - var diffStats = section.diffStats;
-      - var whatwg = (diffStats.whatwg.total > 0) ? (diffStats.whatwg.diffCount / diffStats.whatwg.total) : 0;
-      - var w3c = (diffStats.w3c.total > 0) ? (diffStats.w3c.diffCount / diffStats.w3c.total) : 0;
-      - var diffRatio = (whatwg > w3c) ? whatwg : w3c;
-      meter.meter(value=diffRatio, high='0.5')
+      - var whatwg = section.whatwg ? section.whatwg.diffStat : null;
+      - var whatwgDiff = (whatwg && whatwg.total > 0) ? (whatwg.diffCount / whatwg.total) : 0;
+
+      - var w3c = section.w3c ? section.w3c.diffStat : null;
+      - var w3cDiff = (w3c && w3c.total > 0) ? (w3c.diffCount / w3c.total) : 0;
+
+      - var diffRatio = (whatwgDiff > w3cDiff) ? whatwgDiff : w3cDiff;
+      meter.meter(value=diffRatio, high='0.5', data-x-w3c=w3cDiff, data-x-whatwg=whatwgDiff)
       | #{section.headingText}
       |  
       span.icons
