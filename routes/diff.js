@@ -27,7 +27,7 @@ router.get(/^\/(.+)$/, function (req, res, next) {
         }
 
         res.render('diff', {
-            title: 'Diff of ' + titles.join(' | '),
+            title: 'Diff of ' + titles.join(' ← '),
             time: time,
 
             section: section,
