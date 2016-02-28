@@ -188,6 +188,10 @@ code {
     border-bottom: none;
 }
 
+.diff .hljs-tag {
+    color: #666;
+}
+
 .diff .mark {
     background: #ff6;
     border: thin solid #aa0;
