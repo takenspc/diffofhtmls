@@ -3,8 +3,8 @@ extends layout
 block content
   h1= title
 
-  h2 Q. What’s this?
-  p This site is an unofficial diff viewer for <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1</a>. The Diff of HTMLs provides side-by-side diff view of each section between the specifications.
+  h2 Q. What’s the Diff of HTMLs?
+  p The Diff of HTMLs is an unofficial diff viewer for <a href="https://html.spec.whatwg.org/multipage/">WHATWG HTML Standard</a> and <a href="https://w3c.github.io/html/">W3C HTML 5.1</a>. The Diff of HTMLs provides side-by-side diff view of each section between the HTML specifications.
   p There are number of differences between WHATWG HTML Standard and W3C HTML 5.1. At the time of writing this, the differences include:
   ul
     li <code>hgroup</code>
@@ -21,7 +21,9 @@ block content
     li Canvas 2D Context
     li Common idioms without dedicated elements
     li Microdata
-    li worker modules
+    li Secondary browsing contexts
+    li Security infrastructure for <code>Window</code>, <code>WindowProxy</code>, and <code>Location</code> objects
+    li Module workers
     li <code>requestAnimationFrame</code>
     li Web Messaging
     li Sever-sent events
@@ -29,18 +31,19 @@ block content
     li Web Workers
     li Web Storage
     li <code>showModalDialog</code>
-  p I can’t remember the differences. Thus I created this site.
-  
-  h2 Q. Is this site affiliate with WHATWG or W3C?
-  p No. This site is not affiliate with WHATWG nor W3C.
+  p I can’t remember the differences. Thus I created the Diff of HTMLs.
+  p The Diff of HTMLs hopes that the HTML specifications will unite. Once the HTML specifications united, the Diff of HTMLs may be shutdown.
 
-  h2 Q. Are table of contents (TOCs) displayed in this site same as the specifications?
-  p No. This site modifies original TOCs as follows to reduce unnecessary diffs.
+  h2 Q. Is the Diff of HTMLs affiliate with WHATWG or W3C?
+  p No. The Diff of HTMLs is not affiliate with WHATWG nor W3C.
+
+  h2 Q. Are table of contents (TOCs) displayed in the Diff of HTMLs same as the specifications?
+  p No. The Diff of HTMLs modifies original TOCs as follows to reduce unnecessary diffs.
 
   h3 Modifications applied to both WAHTWG HTML Standard and W3C HTML 5.1
   ul
     li Remove all sections before “Introduction” (headers, table of contents, abstract, status of the document)
-    li Remove all sections after “IANA considerations” (indexes, references, acknowledgements)
+    li Remove all sections after “IANA considerations” (indexes, references, changes, acknowledgements)
 
   h3 Modifications applied to W3C HTML 5.1
   ul
@@ -56,8 +59,8 @@ block content
     li Reorder “Links” in “The elements of HTML”
     li Reorder “Calling scripts” in “Processing model”
 
-  h2 Q. Are HTMLs displayed in this site same as the specifications?
-  p No. This site reformats HTMLs to reduce unnecessary diffs.
+  h2 Q. Are HTMLs displayed in the Diff of HTMLs same as the specifications?
+  p No. The Diff of HTMLs reformats HTMLs to reduce unnecessary diffs.
 
   h3 Modifications applied to both WAHTWG HTML Standard and W3C HTML 5.1
   ul
