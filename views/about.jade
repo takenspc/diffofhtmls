@@ -8,24 +8,26 @@ block content
   p There are number of differences between WHATWG HTML Standard and W3C HTML 5.1. At the time of writing this, the differences include:
   ul
     li <code>hgroup</code>
-    li <code>blockquote</code>
+    li <code>blockquote</code> and <code>cite</code>
     li <code>main</code>
     li <code>a[ping]</code>
     li <code>ruby</code>
-    li <code>cite</code>
+    li requirements for alternative texts of images
     li <code>iframe[seamless]</code>
     li <code>xml:base</code>
+    li <code>DataCue</code>
     li Table sorting model
     li <code>input[type="datetime-local"]</code> and <code>input[type="datetime"]</code>
     li Canvas 2D Context
+    li Common idioms without dedicated elements
     li Microdata
+    li worker modules
     li <code>requestAnimationFrame</code>
+    li Web Messaging
     li Sever-sent events
-    li <code>postMessage</code> and <code>onmessage</code>
     li Web Sockets API
     li Web Workers
     li Web Storage
-    li requirements for alternative texts of images
     li <code>showModalDialog</code>
   p I can’t remember the differences. Thus I created this site.
   
@@ -43,12 +45,16 @@ block content
   h3 Modifications applied to W3C HTML 5.1
   ul
     li Replace “’” with “'”
-    li Replace “behavior” with “behaviours”
-    li Replace “Color” with “Colour” “excepting type=color”
     li Replace “Plugin Content Handlers” with “Plugins”
-    li Replace “Serializing” with “Serialising”
+    li Replace “Color” with “Colour” excepting “type=color”
+    li Replace “A link or button containing nothing but an image” with “A link or button containing nothing but the image”
+    li Replace “Images of text” with “Text that has been rendered to a graphic for typographical effect”
     li Replace “Synchronizing” with “Synchronising”
+    li Replace “implementation notes” with “Implementation notes”
+    li Replace “behaviors” with “behaviours”
+    li Replace “Serializing” with “Serialising”
     li Reorder “Links” in “The elements of HTML”
+    li Reorder “Calling scripts” in “Processing model”
 
   h2 Q. Are HTMLs displayed in this site same as the specifications?
   p No. This site reformats HTMLs to reduce unnecessary diffs.
@@ -56,7 +62,7 @@ block content
   h3 Modifications applied to both WAHTWG HTML Standard and W3C HTML 5.1
   ul
     li Normalize white spaces
-    li Remove start and end tags of <code>a</code>, <code>em</code>, <code>strong</code>, <code>small</code>, <code>s</code>, <code>cite</code>, <code>q</code>, <code>dfn</code>, <code>abbr</code>, <code>data</code>, <code>time</code>, <code>code</code>, <code>var</code>, <code>samp</code>, <code>kbd</code>, <code>i</code>, <code>b</code>, <code>u</code>, and <code>mark</code>.
+    li Remove start and end tags of <code>a</code>, <code>em</code>, <code>strong</code>, <code>dfn</code>, <code>code</code>, <code>var</code>, and <code>i</code>.
     li Sort attributes alphabetically
     li Remove <code>data-*</code> attributes
     li Remove <code>id</code> attribute
