@@ -42,6 +42,12 @@ code {
     padding-top: 1em;
 }
 
+#header .wrap {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #header a {
     color: inherit;
     text-decoration: underline;
@@ -51,6 +57,21 @@ code {
     height: 1.5em;
     margin-right: .25em;
     vertical-align: middle;
+}
+
+#header .nav {
+    flex: 1;
+}
+
+#header .nav ul {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+}
+
+#header .nav li {
+    padding: 0 .5em;
 }
 
 /*
