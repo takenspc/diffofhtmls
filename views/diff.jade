@@ -33,7 +33,7 @@ block content
         td
           if section.w3c
             - var parent = section.parent;
-            - while (parent.parent) { parent = parent.parent }
+            - while (parent.parent) { if (parent.parent.w3c.id === 'semantics') { break; } parent = parent.parent; }
             - var html = encodeURIComponent(parent.w3c.id) + '.html';
             - var id = encodeURIComponent(section.w3c.id);
             - var href = 'https://w3c.github.io/html/' + html + '#' + id; 
