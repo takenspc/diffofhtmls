@@ -16,6 +16,16 @@ app.locals.moment = require('moment');
 app.locals.momentFormat = 'YYYY-M-D (UTC)';
 app.locals.baseURL = process.env.BASE_URL || 'https://diffofhtmls.herokuapp.com';
 
+if (app.get('env') === 'production') {
+    app.use(function(req, res, next) {
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+            return res.redirect(app.locals.baseURL + req.url);
+        }
+
+        return next();
+    });
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
