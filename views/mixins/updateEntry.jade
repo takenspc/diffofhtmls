@@ -1,16 +1,14 @@
 include ../mixins/sectionLink.jade
 
-mixin updateEntry(update)
-  if update.updated && update.updated.length > 0
-    p The HTML specifications are updated.
+
+mixin updateEntryOfSpecification(updated, orgTitle, org)
+  - var updateEntries = updated.filter(function(updateEntry) { return !!updateEntry[org]; });
+  if updateEntries.length > 0
+    h3=orgTitle
     ul.sections
-      each updateEntry in update.updated
+      each updateEntry in updateEntries
         li.section
-          if updateEntry.section
-            +sectionLink(updateEntry.section)
-          else
-            - var href = '/diff/' + updateEntry.path.split('/').map(encodeURIComponent).join('/');
-            a(href=href)= updateEntry.headingText
+          +sectionLink(updateEntry.section)
           div.whatwg WHATWG HTML Standard: 
             if updateEntry.whatwg
               strong
@@ -23,5 +21,10 @@ mixin updateEntry(update)
                 | #{updateEntry.w3c.splitted}
             else
               | not modified
+
+mixin updateEntry(update)
+  if update.updated && update.updated.length > 0
+    +updateEntryOfSpecification(update.updated, 'WHATWG HTML Standard', 'whatwg')
+    +updateEntryOfSpecification(update.updated, 'W3C HTML 5.1', 'w3c')
   else
     p The HTML specifications are not updated.
