@@ -2,9 +2,11 @@ include ../mixins/sectionLink.jade
 
 
 mixin updateEntryOfSpecification(updated, orgTitle, org)
-  - var updateEntries = updated.filter(function(updateEntry) { return !!updateEntry[org]; });
+  - var updateEntries = (updated || []).filter(function(updateEntry) { return !!updateEntry[org]; });
+  h3=orgTitle
   if updateEntries.length > 0
-    h3=orgTitle
+    p= orgTitle
+     |  is updated
     ul.sections
       each updateEntry in updateEntries
         li.section
@@ -21,10 +23,11 @@ mixin updateEntryOfSpecification(updated, orgTitle, org)
                 | #{updateEntry.w3c.splitted}
             else
               | not modified
+  else
+    p= orgTitle
+     |  is not updated
+
 
 mixin updateEntry(update)
-  if update.updated && update.updated.length > 0
-    +updateEntryOfSpecification(update.updated, 'WHATWG HTML Standard', 'whatwg')
-    +updateEntryOfSpecification(update.updated, 'W3C HTML 5.1', 'w3c')
-  else
-    p The HTML specifications are not updated.
+  +updateEntryOfSpecification(update.updated, 'WHATWG HTML Standard', 'whatwg')
+  +updateEntryOfSpecification(update.updated, 'W3C HTML 5.1', 'w3c')
