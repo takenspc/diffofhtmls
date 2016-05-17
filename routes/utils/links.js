@@ -4,9 +4,7 @@
 // Create Link
 //
 function* nextSection(parent, sections) {
-    for (var i = 0, len = sections.length; i < len; i++) {
-        var section = sections[i];
-
+    for (const section of sections) {
         // create link here too
         section.parent = parent;
 
@@ -24,8 +22,8 @@ function* nextSection(parent, sections) {
 }
 
 function createLinkForIndexJSON(sections) {
-    var previousSection = null;
-    for (var section of nextSection(null, sections)) {
+    let previousSection = null;
+    for (const section of nextSection(null, sections)) {
 
         section.previous = previousSection;
         section.next = null;
@@ -40,13 +38,12 @@ function createLinkForIndexJSON(sections) {
 
 
 function findSection(sections, sectionPath) {
-    for (var i = 0, len = sections.length; i < len; i++) {
-        var section = sections[i];
+    for (const section of sections) {
         if (section.path === sectionPath) {
             return section;
         }
 
-        var child = findSection(section.sections, sectionPath);
+        const child = findSection(section.sections, sectionPath);
         if (child) {
             return child;
         }
