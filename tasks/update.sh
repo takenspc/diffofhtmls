@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# rm -rf is slow
-mkdir -p generator
-mv generator generator_
+rm -rf generator
+mkdir generator
 
 git clone --depth 1 https://github.com/takenspc/diffofhtmlsgenerator.git generator
 
