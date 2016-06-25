@@ -15,14 +15,18 @@ mixin updateEntryOfSpecification(updated, orgTitle, org)
             if updateEntry.whatwg
               strong
                 | #{updateEntry.whatwg.splitted}
-            else
+            else if updateEntry.section.whatwg
               | not modified
+            else
+              | not available
           div.w3c W3C HTML 5.1: 
             if updateEntry.w3c
               strong
                 | #{updateEntry.w3c.splitted}
-            else
+            else if updateEntry.section.w3c
               | not modified
+            else
+              | not available
   else
     p= orgTitle
      |  is not updated
