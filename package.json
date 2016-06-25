@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "lint": "eslint .",
-    "dtsm": "dtsm"
+    "dtsm": "dtsm",
+    "jsodc": "jsdoc routes/**/*.js"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "dtsm": "^1.1.0",
     "eslint": "^2.13.1",
-    "eslint-plugin-node": "^1.5.1"
+    "eslint-plugin-node": "^1.5.1",
+    "jsdoc": "^3.4.0"
   }
 }

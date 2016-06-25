@@ -7,6 +7,11 @@ const dataRoot = path.join(__dirname, '..', '..', 'data');
 //
 // Utils
 //
+/**
+ * @private
+ * @param {string} jsonPath
+ * @returns {Promise<any>}
+ */
 function loadJSON(jsonPath) {
     return new Promise((resolve, reject) => {
         fs.readFile(jsonPath, 'utf-8', (err, str) => {
@@ -25,6 +30,9 @@ function loadJSON(jsonPath) {
 //
 // Index
 //
+/**
+ * @returns {Promise<Section[]>}
+ */
 function loadIndexJSON() {
     const jsonPath = path.join(dataRoot, 'index.json');
     return loadJSON(jsonPath).then((sections) => {
@@ -37,6 +45,10 @@ function loadIndexJSON() {
 //
 // Diff
 //
+/**
+ * @param {string} sectionPath
+ * @returns {Promise<SectionAndDiff>}
+ */
 function loadDiff(sectionPath) {
     return loadIndexJSON().then((sections) => {
         const section = links.findSection(sections, sectionPath);
@@ -58,6 +70,9 @@ function loadDiff(sectionPath) {
 //
 // Fetch
 //
+/**
+ * @returns {Promise<number>}
+ */
 function loadFetchJSON() {
     const fetchJSONPath = path.join(dataRoot, 'fetch.json');
     return loadJSON(fetchJSONPath).then((fetchData) => {

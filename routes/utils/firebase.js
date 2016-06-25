@@ -22,12 +22,22 @@ if (URL && AUTH_TOKEN) {
 //
 // Utils
 //
+/**
+ * @private
+ * @param {Firebase} firebaseRef
+ * @returns {Promise<any>}
+ */
 function getValue(firebaseRef) {
     return firebaseRef.once('value').then((dataSnapshot) => {
         return dataSnapshot.val();
     });
 }
 
+/**
+ * @private
+ * @param {Firebase} firebaseRef
+ * @returns {Promise<any>}
+ */
 function getLastValue(firebaseRef) {
     const query = firebaseRef.limitToLast(1);
     return query.once('value').then((dataSnapshot) => {
@@ -51,6 +61,9 @@ function getLastValue(firebaseRef) {
 //
 // Index
 //
+/**
+ * @returns {Promise<Section[]>}
+ */
 function loadIndexJSON() {
     const indexRef = FIREBASE_REF.child('index');
     return getValue(indexRef).then((sections) => {
@@ -63,6 +76,10 @@ function loadIndexJSON() {
 //
 // Diff
 //
+/**
+ * @param {string} sectionPath
+ * @returns {Promise<SectionAndDiff>}
+ */
 function loadDiff(sectionPath) {
     // TODO skip loadIndexJSON here
     return loadIndexJSON().then((sections) => {
@@ -86,6 +103,9 @@ function loadDiff(sectionPath) {
 //
 // Fetch
 //
+/**
+ * @returns {Promise<number>}
+ */
 function loadFetchJSON() {
     const updateRef = FIREBASE_REF.child('update');
     return getLastValue(updateRef).then((value) => {
@@ -97,6 +117,9 @@ function loadFetchJSON() {
 //
 // Update
 //
+/**
+ * @returns {Promise<UpdateEntry[]>}
+ */
 function loadUpdateEntries() {
     const updateRef = FIREBASE_REF.child('update');
     return new Promise((resolve, reject) => {

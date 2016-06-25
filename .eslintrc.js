@@ -22,6 +22,13 @@ module.exports = {
         "semi": [
             "error",
             "always"
+        ],
+        "valid-jsdoc": [
+            "error",
+            {
+                "requireParamDescription": false,
+                "requireReturnDescription": false,
+            } 
         ]
     }
 };
