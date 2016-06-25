@@ -1,0 +1,26 @@
+{
+  "repos": [
+    {
+      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "ref": "master"
+    }
+  ],
+  "path": "typings",
+  "bundle": "typings/bundle.d.ts",
+  "link": {
+    "npm": {
+      "include": true
+    }
+  },
+  "dependencies": {
+    "node/node.d.ts": {
+      "ref": "73110d92bdab2367e326f297bef3574285cba329"
+    },
+    "diff/diff.d.ts": {
+      "ref": "73110d92bdab2367e326f297bef3574285cba329"
+    },
+    "moment/moment.d.ts": {
+      "ref": "73110d92bdab2367e326f297bef3574285cba329"
+    }
+  }
+}
