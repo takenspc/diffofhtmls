@@ -1,5 +1,5 @@
 /* globals Firebase */
-var firebase = require('firebase');
+require('firebase');
 var links = require('./links');
 
 //
@@ -11,10 +11,8 @@ const FIREBASE_REF = new Firebase(URL);
 if (URL && AUTH_TOKEN) {
     FIREBASE_REF.authWithCustomToken(AUTH_TOKEN, (err) => {
         if (err) {
-            console.log('can not connect firebase');
             throw new Error(err);
         }
-        console.log('connected to Firebase');
     });
 }
 
