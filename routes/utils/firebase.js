@@ -45,7 +45,6 @@ function getLastValue(firebaseRef) {
             return Promise.reject(new Error(`Unexpected number of children: ${numChildren}`));
         }
 
-        // XXX val = dataSnapshot.val()[0]?
         let val;
         dataSnapshot.forEach((childSnapshot) => {
             val = childSnapshot.val();
