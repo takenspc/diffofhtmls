@@ -13,7 +13,7 @@ mixin sectionLink(section)
         if section.whatwg
           img.icon.whatwg(alt='available at HTML Standard ', src='/images/whatwg.svg', width='16' height='16')
         if section.w3c
-          img.icon.w3c(alt='available at HTML 5.1 ', src='/images/w3c.svg', width='16' height='16')
+          img.icon.w3c(alt='available at HTML 5.1 ', src='/images/w3c.png', width='16' height='16')
       meter.meter(value=diffRatio, high='0.5', data-x-w3c=w3cDiff, data-x-whatwg=whatwgDiff)
       | #{section.headingText}
   else
