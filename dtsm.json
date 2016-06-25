@@ -21,6 +21,12 @@
     },
     "moment/moment.d.ts": {
       "ref": "73110d92bdab2367e326f297bef3574285cba329"
+    },
+    "express/express.d.ts": {
+      "ref": "73110d92bdab2367e326f297bef3574285cba329"
+    },
+    "firebase/firebase.d.ts": {
+      "ref": "73110d92bdab2367e326f297bef3574285cba329"
     }
   }
 }
