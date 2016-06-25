@@ -19,7 +19,7 @@ mixin updateEntryOfSpecification(updated, orgTitle, org)
               | not modified
             else
               | not available
-          div.w3c W3C HTML 5.1: 
+          div.w3c W3C HTML: 
             if updateEntry.w3c
               strong
                 | #{updateEntry.w3c.splitted}
@@ -34,4 +34,4 @@ mixin updateEntryOfSpecification(updated, orgTitle, org)
 
 mixin updateEntry(update)
   +updateEntryOfSpecification(update.updated, 'WHATWG HTML Standard', 'whatwg')
-  +updateEntryOfSpecification(update.updated, 'W3C HTML 5.1', 'w3c')
+  +updateEntryOfSpecification(update.updated, 'W3C HTML', 'w3c')
