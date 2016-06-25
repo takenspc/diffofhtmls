@@ -12,7 +12,7 @@ router.get('/about', (req, res) => {
 
 router.get('/', (req, res, next) => {
     Promise.all([
-        utils.loadIndexJSON(),
+        utils.loadIndexJSON(false),
         utils.loadFetchJSON()
     ]).then(([index, time]) => {
         res.render('index', {

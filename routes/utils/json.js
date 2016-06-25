@@ -31,12 +31,15 @@ function loadJSON(jsonPath) {
 // Index
 //
 /**
+ * @param {boolean} willCreateLinks
  * @returns {Promise<Section[]>}
  */
-function loadIndexJSON() {
+function loadIndexJSON(willCreateLinks) {
     const jsonPath = path.join(dataRoot, 'index.json');
     return loadJSON(jsonPath).then((sections) => {
-        links.createLinkForIndexJSON(sections, null);
+        if (willCreateLinks) {
+            links.createLinkForIndexJSON(sections, null);
+        }
         return sections;
     });
 }
@@ -50,10 +53,10 @@ function loadIndexJSON() {
  * @returns {Promise<SectionAndDiff>}
  */
 function loadDiff(sectionPath) {
-    return loadIndexJSON().then((sections) => {
+    return loadIndexJSON(true).then((sections) => {
         const section = links.findSection(sections, sectionPath);
         if (!section) {
-            Promise.reject(new Error('No such section: ' + sectionPath));
+            Promise.reject(new Error(`No such section: ${sectionPath}`));
         }
 
         const jsonPath = path.join(dataRoot, section.path + '.json');

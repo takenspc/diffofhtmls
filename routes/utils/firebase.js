@@ -59,12 +59,15 @@ function getLastValue(firebaseRef) {
 // Index
 //
 /**
+ * @param {boolean} willCreateLinks
  * @returns {Promise<Section[]>}
  */
-function loadIndexJSON() {
+function loadIndexJSON(willCreateLinks) {
     const indexRef = FIREBASE_REF.child('index');
     return getValue(indexRef).then((sections) => {
-        links.createLinkForIndexJSON(sections, null);
+        if (willCreateLinks) {
+            links.createLinkForIndexJSON(sections, null);
+        }
         return sections;
     });
 }
@@ -79,7 +82,7 @@ function loadIndexJSON() {
  */
 function loadDiff(sectionPath) {
     // TODO skip loadIndexJSON here
-    return loadIndexJSON().then((sections) => {
+    return loadIndexJSON(true).then((sections) => {
         const section = links.findSection(sections, sectionPath);
         if (!section) {
             Promise.reject(new Error(`No such section: ${sectionPath}`));

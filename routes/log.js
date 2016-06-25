@@ -18,7 +18,7 @@ router.get('/atom', (req, res, next) => {
 
 router.get('/', (req, res, next) => {
     Promise.all([
-        utils.loadIndexJSON(),
+        utils.loadIndexJSON(false),
         utils.loadUpdates()
     ]).then(([index, updates]) => {
         for (const update of updates) {
