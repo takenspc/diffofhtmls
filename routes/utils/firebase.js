@@ -1,4 +1,5 @@
 'use strict';
+/* globals Firebase */
 var firebase = require('firebase');
 var links = require('./links');
 
@@ -62,7 +63,7 @@ function getLastValue(firebaseRef) {
 function loadIndexJSON() {
     var indexRef = FIREBASE_REF.child('index');
     return getValue(indexRef).then((sections) => {
-        links.createLinkForIndexJSON(sections, null)
+        links.createLinkForIndexJSON(sections, null);
         return sections;
     });
 }
@@ -129,5 +130,5 @@ module.exports = {
     loadDiff: loadDiff,
     loadFetchJSON: loadFetchJSON,
     loadIndexJSON: loadIndexJSON,
-    loadUpdates: loadUpdateEntries,
+    loadUpdates: loadUpdateEntries
 };

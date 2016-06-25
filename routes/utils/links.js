@@ -54,5 +54,5 @@ function findSection(sections, sectionPath) {
 
 module.exports = {
     createLinkForIndexJSON: createLinkForIndexJSON,
-    findSection: findSection,
+    findSection: findSection
 };

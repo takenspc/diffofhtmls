@@ -1,5 +1,4 @@
 'use strict';
-var path = require('path');
 var express = require('express');
 var router = express.Router();
 var utils = require('./utils/firebase');
@@ -10,7 +9,7 @@ router.get('/atom', function (req, res, next) {
     utils.loadUpdates().then(function (updates) {
         res.set('Content-Type', 'application/atom+xml');
         res.render('log_atom', {
-            updates: updates,
+            updates: updates
         });
     }).catch(function (err) {
         next(err);
@@ -21,7 +20,7 @@ router.get('/atom', function (req, res, next) {
 router.get('/', function (req, res, next) {
     Promise.all([
         utils.loadIndexJSON(),
-        utils.loadUpdates(),
+        utils.loadUpdates()
     ]).then(function (data) {
         var index = data[0];
         var updates = data[1];
@@ -41,7 +40,7 @@ router.get('/', function (req, res, next) {
         
         res.render('log', {
             title: 'Update information',
-            updates: updates,
+            updates: updates
         });
     }).catch(function (err) {
         next(err);

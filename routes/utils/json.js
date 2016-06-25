@@ -49,7 +49,7 @@ function loadDiff(sectionPath) {
         return loadJSON(jsonPath).then(function (diffs) {
             return {
                 section: section,
-                diffs: diffs,
+                diffs: diffs
             };
         });
     });
@@ -70,5 +70,5 @@ function loadFetchJSON() {
 module.exports = {
     loadDiff: loadDiff,
     loadFetchJSON: loadFetchJSON,
-    loadIndexJSON: loadIndexJSON,
+    loadIndexJSON: loadIndexJSON
 };

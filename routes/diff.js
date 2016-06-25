@@ -1,5 +1,4 @@
 'use strict';
-var path = require('path');
 var express = require('express');
 var router = express.Router();
 var utils = require('./utils/firebase');
@@ -10,7 +9,7 @@ router.get(/^\/(.+)$/, function (req, res, next) {
 
     Promise.all([
         utils.loadDiff(sectionPath),
-        utils.loadFetchJSON(),
+        utils.loadFetchJSON()
     ]).then(function (data) {
         var obj = data[0];
         var section = obj.section;
@@ -35,7 +34,7 @@ router.get(/^\/(.+)$/, function (req, res, next) {
             previousSection: section.previous,
             nextSection: section.next,
 
-            diffs: diffs,
+            diffs: diffs
         });
     }).catch(function (err) {
         next(err);
