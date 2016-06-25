@@ -1,4 +1,3 @@
-'use strict';
 var fs = require('fs');
 var path = require('path');
 var links = require('./links');
@@ -9,14 +8,14 @@ const dataRoot = path.join(__dirname, '..', '..', 'data');
 // Utils
 //
 function loadJSON(jsonPath) {
-    return new Promise(function (resolve, reject) {
-        fs.readFile(jsonPath, 'utf-8', function (err, str) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(jsonPath, 'utf-8', (err, str) => {
             if (err) {
                 reject(err);
                 return;
             }
 
-            var data = JSON.parse(str);
+            const data = JSON.parse(str);
             resolve(data);
         });
     });
@@ -27,8 +26,8 @@ function loadJSON(jsonPath) {
 // Index
 //
 function loadIndexJSON() {
-    var jsonPath = path.join(dataRoot, 'index.json');
-    return loadJSON(jsonPath).then(function (sections) {
+    const jsonPath = path.join(dataRoot, 'index.json');
+    return loadJSON(jsonPath).then((sections) => {
         links.createLinkForIndexJSON(sections, null);
         return sections;
     });
@@ -39,14 +38,14 @@ function loadIndexJSON() {
 // Diff
 //
 function loadDiff(sectionPath) {
-    return loadIndexJSON().then(function (sections) {
-        var section = links.findSection(sections, sectionPath);
+    return loadIndexJSON().then((sections) => {
+        const section = links.findSection(sections, sectionPath);
         if (!section) {
             Promise.reject(new Error('No such section: ' + sectionPath));
         }
 
-        var jsonPath = path.join(dataRoot, section.path + '.json');
-        return loadJSON(jsonPath).then(function (diffs) {
+        const jsonPath = path.join(dataRoot, section.path + '.json');
+        return loadJSON(jsonPath).then((diffs) => {
             return {
                 section: section,
                 diffs: diffs
@@ -60,8 +59,8 @@ function loadDiff(sectionPath) {
 // Fetch
 //
 function loadFetchJSON() {
-    var fetchJSONPath = path.join(dataRoot, 'fetch.json');
-    return loadJSON(fetchJSONPath).then(function (fetchData) {
+    const fetchJSONPath = path.join(dataRoot, 'fetch.json');
+    return loadJSON(fetchJSONPath).then((fetchData) => {
         return fetchData.time;
     });
 }

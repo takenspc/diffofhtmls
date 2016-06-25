@@ -1,26 +1,19 @@
-'use strict';
 var express = require('express');
 var router = express.Router();
 var utils = require('./utils/firebase');
 
 
-router.get(/^\/(.+)$/, function (req, res, next) {
-    var sectionPath = req.param(0);
+router.get(/^\/(.+)$/, (req, res, next) => {
+    const sectionPath = req.param(0);
 
     Promise.all([
         utils.loadDiff(sectionPath),
         utils.loadFetchJSON()
-    ]).then(function (data) {
-        var obj = data[0];
-        var section = obj.section;
-        var diffs = obj.diffs;
-
-        var time = data[1];
-
+    ]).then(([{ section, diffs }, time]) => {
         // XXX
-        var topics = [];
-        var titles = [];
-        for (var node = section; node; node = node.parent) {
+        const topics = [];
+        const titles = [];
+        for (let node = section; node; node = node.parent) {
             topics.unshift(node.headingText);
             titles.push(node.headingText);
         }
@@ -36,7 +29,7 @@ router.get(/^\/(.+)$/, function (req, res, next) {
 
             diffs: diffs
         });
-    }).catch(function (err) {
+    }).catch((err) => {
         next(err);
     });
 });

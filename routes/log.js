@@ -1,39 +1,32 @@
-'use strict';
 var express = require('express');
 var router = express.Router();
 var utils = require('./utils/firebase');
 var links = require('./utils/links');
 
 
-router.get('/atom', function (req, res, next) {
-    utils.loadUpdates().then(function (updates) {
+router.get('/atom', (req, res, next) => {
+    utils.loadUpdates().then((updates) => {
         res.set('Content-Type', 'application/atom+xml');
         res.render('log_atom', {
             updates: updates
         });
-    }).catch(function (err) {
+    }).catch((err) => {
         next(err);
     });
 });
 
 
-router.get('/', function (req, res, next) {
+router.get('/', (req, res, next) => {
     Promise.all([
         utils.loadIndexJSON(),
         utils.loadUpdates()
-    ]).then(function (data) {
-        var index = data[0];
-        var updates = data[1];
-        
-        // XXX 
-        for (var i = 0; i < updates.length; i++) {
-            var update = updates[i];
+    ]).then(([index, updates]) => {
+        for (const update of updates) {
             if (!update.updated) {
                 continue;
             }
 
-            for (var j = 0; j < update.updated.length; j++) {
-                var updated = update.updated[j];
+            for (const updated of  update.updated) {
                 updated.section = links.findSection(index, updated.path);
             }
         }
@@ -42,7 +35,7 @@ router.get('/', function (req, res, next) {
             title: 'Update information',
             updates: updates
         });
-    }).catch(function (err) {
+    }).catch((err) => {
         next(err);
     });
 });
