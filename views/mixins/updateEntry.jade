@@ -15,7 +15,7 @@ mixin updateEntryOfSpecification(updated, orgTitle, org)
             if updateEntry.whatwg
               strong
                 | #{updateEntry.whatwg.splitted}
-            else if updateEntry.section.whatwg
+            else if updateEntry.section && updateEntry.section.whatwg
               | not modified
             else
               | not available
@@ -23,7 +23,7 @@ mixin updateEntryOfSpecification(updated, orgTitle, org)
             if updateEntry.w3c
               strong
                 | #{updateEntry.w3c.splitted}
-            else if updateEntry.section.w3c
+            else if updateEntry.section && updateEntry.section.w3c
               | not modified
             else
               | not available
