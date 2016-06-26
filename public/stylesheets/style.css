@@ -51,11 +51,12 @@ code {
 #header a {
     color: inherit;
     text-decoration: underline;
+    line-height: 1.5rem;
 }
 
 #header .logo img {
-    height: 1.5em;
-    margin-right: .25em;
+    height: 1.5rem;
+    margin-right: .5rem;
     vertical-align: middle;
 }
 
