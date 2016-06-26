@@ -6,11 +6,12 @@ mixin toc(sections)
   ol
     each section in sections
       li
-        if section.sections.length === 0
+        - var childSections = section.sections || [];
+        if childSections.length === 0
           +sectionLink(section)
         else
           | #{section.headingText}
-          +toc(section.sections)
+          +toc(childSections)
 
 block content
   h1 Diff of HTMLs
