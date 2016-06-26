@@ -11,30 +11,26 @@
  */
 
 /**
- * @typedef {Object} JSONEntry
+ * @typedef {Object} FlattedSpecSection
  * @property {string} id
- * @property {string} path
- * @property {string} headingText
  * @property {string} originalHeadingText
- * @property {JSONEntry[]} sections
  * @property {HashInfo} hash
  * @property {DiffStat} diffStat: DiffStat
- * @property {number} bufferListLength: number
 
  */
 
 /**
- * @typedef {Object} Section
+ * @typedef {Object} UnifiedSection
  * @class
  * @property {string} path
  * @property {string} headingText
  * @property {string}originalHeadingText
- * @property {Section[]} sections
- * @property {JSONEntry} whatwg
- * @property {JSONEntry} w3c
- * @property {Section} parent
- * @property {Section} previous
- * @property {Section} next
+ * @property {UnifiedSection[]} sections
+ * @property {JSONEntry} FlattedSpecSection
+ * @property {JSONEntry} FlattedSpecSection
+ * @property {UnifiedSection} parent
+ * @property {UnifiedSection} previous
+ * @property {UnifiedSection} next
  */
 
 /**
