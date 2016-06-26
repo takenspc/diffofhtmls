@@ -66,7 +66,7 @@ function loadIndexJSON(willCreateLinks) {
     const indexRef = FIREBASE_REF.child('index');
     return getValue(indexRef).then((sections) => {
         if (willCreateLinks) {
-            links.createLinkForIndexJSON(sections, null);
+            links.createLinkForIndexJSON(sections);
         }
         return sections;
     });

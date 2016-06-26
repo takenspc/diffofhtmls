@@ -38,7 +38,7 @@ function loadIndexJSON(willCreateLinks) {
     const jsonPath = path.join(dataRoot, 'index.json');
     return loadJSON(jsonPath).then((sections) => {
         if (willCreateLinks) {
-            links.createLinkForIndexJSON(sections, null);
+            links.createLinkForIndexJSON(sections);
         }
         return sections;
     });
