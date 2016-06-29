@@ -134,7 +134,7 @@ code {
 }
 
 .toc .level0 {
-    border-left: thick solid #eee;
+    border-left: medium solid #aaa;
     counter-increment: toc;
     list-style: none;
     margin: 0 0 2em -1.5em;
@@ -142,7 +142,8 @@ code {
 }
 
 .toc .level0 > .title {
-    background: linear-gradient(#eee, #fff);
+    background: #f8f8f8;
+    border-bottom: thin solid #aaa;
     margin: 0 0 .5em -1.5em;
     padding: .5em 0 .5em 2em;
     position: relative;
