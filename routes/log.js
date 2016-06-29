@@ -26,8 +26,8 @@ router.get('/', (req, res, next) => {
                 continue;
             }
 
-            for (const updated of  update.updated) {
-                updated.section = links.findSection(index, updated.path);
+            for (const updateEntry of  update.updated) {
+                updateEntry.section = links.findSection(index, updateEntry.path);
             }
         }
         
