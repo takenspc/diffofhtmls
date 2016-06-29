@@ -2,16 +2,16 @@ include ./mixins/sectionLink.jade
 include ./mixins/diffGeneratedNotice.jade
 extends layout
 
-mixin toc(sections)
+mixin toc(sections, level)
   ol
     each section in sections
-      li
+      li(class='level' + level) 
         - var childSections = section.sections || [];
         if childSections.length === 0
           +sectionLink(section)
         else
-          | #{section.headingText}
-          +toc(childSections)
+          div.title #{section.headingText}
+          +toc(childSections, level + 1)
 
 block content
   h1 Diff of HTMLs
@@ -26,4 +26,4 @@ block content
   +diffGeneratedNotice(time)
 
   div.toc
-    +toc(index)
+    +toc(index, 0)
