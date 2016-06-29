@@ -3,14 +3,17 @@ include ../mixins/sectionLink.jade
 
 mixin updateEntryOfSpecification(updated, orgTitle, org)
   - var updateEntries = (updated || []).filter(function(updateEntry) { return !!updateEntry[org]; });
-  h3=orgTitle
+  h3= orgTitle
   if updateEntries.length > 0
     p= orgTitle
      |  is updated
     ul.sections
       each updateEntry in updateEntries
         li.section
-          +sectionLink(updateEntry.section)
+          if updateEntry.section
+            +sectionLink(updateEntry.section)
+          else
+            |= updateEntry.headingText
           div.whatwg WHATWG HTML Standard: 
             if updateEntry.whatwg
               strong
