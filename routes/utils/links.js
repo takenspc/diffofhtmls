@@ -50,7 +50,7 @@
  * @typedef {Object} UpdateSubEntry
  * @property {string} splitted
  * @property {string} formatted
- * @property {string} diffStat
+ * @property {DiffStat} diffStat
  */
 
 /**
