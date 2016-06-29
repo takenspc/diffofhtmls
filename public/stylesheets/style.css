@@ -142,7 +142,7 @@ code {
 }
 
 .toc .level0 > .title {
-    background: #fff;
+    background: linear-gradient(#eee, #fff);
     margin: 0 0 .5em -1.5em;
     padding: .5em 0 .5em 2em;
     position: relative;
