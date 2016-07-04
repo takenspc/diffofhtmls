@@ -1,26 +1,30 @@
 include ../mixins/sectionLink.jade
 
 mixin updateEntryOfOrg(updateSubEntry, section, sameOrg)
-      if updateSubEntry
-        strong
-          | #{updateSubEntry.splitted}
-      else if section
-        | not modified
-      else
-        | not available
-      if sameOrg && updateSubEntry && updateSubEntry.diffStat
-        - var diffStat = updateSubEntry.diffStat;
-        - var alt, src;
-        if diffStat.diffCount > 0
-          - src = '/images/trending_up.svg';
-          - alt = 'increased';
-        else if diffStat.diffCount < 0
-          - src = '/images/trending_down.svg';
-          - alt = 'decreased';
-        else
-          - src = '/images/trending_flat.svg';
-          - alt = 'stayed the same'
-        img.trend(src=src, alt=alt, width=24, height=24)
+  - var isDiffStatChanged = false;
+  - var trending = null;
+  if sameOrg && updateSubEntry && updateSubEntry.diffStat
+    - var diffStat = updateSubEntry.diffStat;
+    if diffStat.diffCount > 0
+      - isDiffStatChanged = true;
+      - trending = { src: '/images/trending_up.svg', alt: 'increased' };
+    else if diffStat.diffCount < 0
+      - isDiffStatChanged = true;
+      - trending = { src: '/images/trending_down.svg', alt: 'decreased' };
+    else
+      - trending = { src: '/images/trending_flat.svg', alt: 'stayed the same' };
+
+  if updateSubEntry
+    if isDiffStatChanged
+      strong #{updateSubEntry.splitted}
+    else
+      | #{updateSubEntry.splitted}
+  else if section
+    | not modified
+  else
+    | not available
+  if trending
+    img.trend(src=trending.src, alt=trending.alt, width=24, height=24)
 
 mixin trendLegends
   div.legends
