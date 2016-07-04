@@ -275,3 +275,8 @@ code {
     margin: 0;
     padding: 0 0 0 1.5em;
 }
+
+.update .section .trend {
+    vertical-align: bottom;
+    margin-left: .25em;
+}

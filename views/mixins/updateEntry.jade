@@ -1,5 +1,44 @@
 include ../mixins/sectionLink.jade
 
+mixin updateEntryOfOrg(updateSubEntry, section, sameOrg)
+      if updateSubEntry
+        strong
+          | #{updateSubEntry.splitted}
+      else if section
+        | not modified
+      else
+        | not available
+      if sameOrg && updateSubEntry && updateSubEntry.diffStat
+        - var diffStat = updateSubEntry.diffStat;
+        - var alt, src;
+        if diffStat.diffCount > 0
+          - src = '/images/trending_up.svg';
+          - alt = 'increased';
+        else if diffStat.diffCount < 0
+          - src = '/images/trending_down.svg';
+          - alt = 'decreased';
+        else
+          - src = '/images/trending_flat.svg';
+          - alt = 'stayed the same'
+        img.trend(src=src, alt=alt, width=24, height=24)
+
+mixin trendLegends
+  div.legends
+    p Legends:
+    dl
+      dt
+       img.trend(alt='increased', src='/images/trending_up.svg', width='14', height='14')
+      dd
+       p Differences were increased.
+      dt
+       img.trend(alt='decreased', src='/images/trending_down.svg', width='14', height='14')
+      dd
+       p Differences were decreased.
+      dt
+       img.trend(alt='stayed the same', src='/images/trending_flat.svg', width='14', height='14')
+      dd
+       p Differences were stayed the same.
+
 
 mixin updateEntryOfSpecification(updated, orgTitle, org)
   - var updateEntries = (updated || []).filter(function(updateEntry) { return !!updateEntry[org]; });
@@ -15,21 +54,11 @@ mixin updateEntryOfSpecification(updated, orgTitle, org)
           else
             |= updateEntry.headingText
           div.whatwg WHATWG HTML Standard: 
-            if updateEntry.whatwg
-              strong
-                | #{updateEntry.whatwg.splitted}
-            else if updateEntry.section && updateEntry.section.whatwg
-              | not modified
-            else
-              | not available
+            - var section = updateEntry.section ? updateEntry.section.whatwg || null : null;
+            +updateEntryOfOrg(updateEntry.whatwg, section, org === 'whatwg')
           div.w3c W3C HTML: 
-            if updateEntry.w3c
-              strong
-                | #{updateEntry.w3c.splitted}
-            else if updateEntry.section && updateEntry.section.w3c
-              | not modified
-            else
-              | not available
+            - var section = updateEntry.section ? updateEntry.section.w3c || null : null;
+            +updateEntryOfOrg(updateEntry.w3c, section, org === 'w3c')
   else
     p= orgTitle
      |  is not updated
