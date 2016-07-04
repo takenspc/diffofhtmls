@@ -10,7 +10,7 @@ mixin sectionLink(section)
       - var diffRatio = ((whatwgDiff > w3cDiff) ? whatwgDiff : w3cDiff).toFixed(2);
       span.icons
         if section.whatwg
-          img.icon.whatwg(alt='WHATWG HTML Standard ', src='/images/whatwg.svg', width='16' height='16')
+          img.icon.whatwg(alt='WHATWG HTML Standard', src='/images/whatwg.svg', width='16' height='16')
         if section.w3c
           img.icon.w3c(alt='W3C HTML', src='/images/w3c.png', width='16' height='16')
       meter.meter(value=diffRatio, high='0.5')
@@ -25,10 +25,10 @@ mixin sectionLegends
     p Legends:
     dl
       dt
-       img.icon.whatwg(alt='WHATWG HTML Standard ', src='/images/whatwg.svg', width='13', height='13')
+       img.icon.whatwg(alt='WHATWG HTML Standard', src='/images/whatwg.svg', width='13', height='13')
       dd
        p A section available at WHATWG HTML Standard.
       dt
-       img.icon.w3c(alt='W3C HTML ', src='/images/w3c.png', width='13', height='13')
+       img.icon.w3c(alt='W3C HTML', src='/images/w3c.png', width='13', height='13')
       dd
        p A section available at W3C HTML.
