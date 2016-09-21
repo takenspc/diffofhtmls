@@ -3,21 +3,8 @@ var router = express.Router();
 var utils = require('./utils/firebase');
 var links = require('./utils/links');
 
-
-router.get('/atom', (req, res, next) => {
-    utils.loadUpdates().then((updates) => {
-        res.set('Content-Type', 'application/atom+xml');
-        res.render('log_atom', {
-            updates: updates
-        });
-    }).catch((err) => {
-        next(err);
-    });
-});
-
-
-router.get('/', (req, res, next) => {
-    Promise.all([
+function loadUpdates() {
+    return Promise.all([
         utils.loadIndexJSON(true),
         utils.loadUpdates()
     ]).then(([index, updates]) => {
@@ -30,7 +17,24 @@ router.get('/', (req, res, next) => {
                 updateEntry.section = links.findSection(index, updateEntry.path);
             }
         }
-        
+        return updates;
+    });
+}
+
+router.get('/atom', (req, res, next) => {
+    loadUpdates().then((updates) => {
+        res.set('Content-Type', 'application/atom+xml');
+        res.render('log_atom', {
+            updates: updates
+        });
+    }).catch((err) => {
+        next(err);
+    });
+});
+
+
+router.get('/', (req, res, next) => {
+    loadUpdates().then((updates) => {
         res.render('log', {
             title: 'Update information',
             updates: updates
