@@ -1,20 +1,22 @@
 /* globals Firebase */
-require('firebase');
+const admin = require('firebase-admin');
 var links = require('./links');
 
 //
 // Firebase
 //
-const URL = process.env.FIREBASE_URL || null;
-const AUTH_TOKEN = process.env.FIREBASE_AUTH_TOKEN || null;
-const FIREBASE_REF = new Firebase(URL);
-if (URL && AUTH_TOKEN) {
-    FIREBASE_REF.authWithCustomToken(AUTH_TOKEN, (err) => {
-        if (err) {
-            throw new Error(err);
-        }
-    });
-}
+const SERVICE_ACCOUNT = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+const DATABASE_URL = process.env.FIREBASE_DATABASE_URL || null;
+
+admin.initializeApp({
+    credential: admin.credential.cert(SERVICE_ACCOUNT),
+    databaseURL: DATABASE_URL,
+    databaseAuthVariableOverride: {
+        canRead: true,
+        canWrite: false,
+    },
+});
+const FIREBASE_REF = admin.database().ref('/');
 
 
 //
