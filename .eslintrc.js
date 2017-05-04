@@ -28,7 +28,10 @@ module.exports = {
             {
                 "requireParamDescription": false,
                 "requireReturnDescription": false,
-            } 
+            }
+        ],
+        "no-sync": [
+            "warning"
         ]
     }
 };
