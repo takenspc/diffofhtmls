@@ -4,7 +4,7 @@ var utils = require('./utils/firebase');
 
 
 router.get(/^\/(.+)$/, (req, res, next) => {
-    const sectionPath = req.param(0);
+    const sectionPath = req.params[0];
 
     Promise.all([
         utils.loadDiff(sectionPath),
