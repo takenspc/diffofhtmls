@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "jsodc": "jsdoc routes/**/*.js",
     "lint": "eslint .",
     "nsp": "nsp check",
     "start": "node ./bin/www"
@@ -26,7 +25,6 @@
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-plugin-node": "^4.2.2",
-    "jsdoc": "^3.4.1",
     "nsp": "^2.6.3"
   }
 }
