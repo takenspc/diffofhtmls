@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var utils = require('./utils/firebase');
-var links = require('./utils/links');
+const express = require('express');
+const router = express.Router();
+const utils = require('./utils/firebase');
+const links = require('./utils/links');
 
 function loadUpdates() {
     return Promise.all([

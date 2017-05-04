@@ -1,6 +1,5 @@
 module.exports = {
     "env": {
-        "commonjs": true,
         "es6": true,
         "node": true,
     },
@@ -31,7 +30,19 @@ module.exports = {
             }
         ],
         "no-sync": [
-            "warning"
-        ]
+            "warn"
+        ],
+        "no-var": [
+            "error",
+        ],
+        "prefer-arrow-callback": [
+            "error",
+        ],
+        "prefer-const": [
+            "error",
+        ],
+        "consistent-return": [
+            "error",
+        ],
     }
 };

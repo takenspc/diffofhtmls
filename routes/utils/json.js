@@ -1,6 +1,6 @@
-var fs = require('fs');
-var path = require('path');
-var links = require('./links');
+const fs = require('fs');
+const path = require('path');
+const links = require('./links');
 
 const dataRoot = path.join(__dirname, '..', '..', 'data');
 

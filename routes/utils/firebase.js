@@ -1,6 +1,5 @@
-/* globals Firebase */
 const admin = require('firebase-admin');
-var links = require('./links');
+const links = require('./links');
 
 //
 // Firebase
